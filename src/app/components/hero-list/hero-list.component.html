@@ -1,0 +1,6 @@
+<div class="hero-list">
+  <app-hero-item
+    *ngFor="let hero of heroes"
+    [hero]="hero"
+    (powerstatsChange)="onPowerstatsChange($event)"/>
+</div>
