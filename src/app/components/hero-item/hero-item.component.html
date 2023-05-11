@@ -3,8 +3,7 @@
   <div class="details">
     <div class="hero-name">{{ hero.name }}</div>
     <div class="hero-powerstats"
-         *ngFor="let powerstat of hero.powerstats | keyvalue"
-      >
+         *ngFor="let powerstat of hero.powerstats | keyvalue">
       <span>{{ powerstat.key | titlecase }}: {{ powerstat.value }} </span>
       <div class="hero-powerstats-buttons">
         <button [disabled]="powerstat.value === 0" (click)="decrementPowerStats(powerstat.key)">-</button>
