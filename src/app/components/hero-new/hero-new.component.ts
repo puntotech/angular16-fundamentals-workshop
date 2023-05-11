@@ -29,11 +29,12 @@ export class HeroNewComponent {
       power: [43, [Validators.required, Validators.max(100), Validators.min(0)]],
       combat: [70, [Validators.required, Validators.max(100), Validators.min(0)]],
     })
-  }
-  );
-
+  });
+  public powerstats = ['intelligence', 'strength', 'speed', 'durability', 'power', 'combat'];
 
   addHero(){
+
+
     if (this.heroForm.invalid) {
       this.message = "Please correct all errors and resubmit the form";
     } else {

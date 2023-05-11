@@ -30,51 +30,45 @@
           </div>
         </div>
         <div formGroupName="powerstats">
-          <div class="input-group">
-            <label for="combat">Combat: </label>
-            <input
-              type="number"
-              name="combat"
-              placeholder="Combat"
-              formControlName="combat"
-            />
-
+          <div *ngFor="let powerstat of this.powerstats">
+            <div class="input-group">
+              <label [for]="powerstat"> {{ powerstat | titlecase }}: </label>
+              <input
+                type="number"
+                [name]="powerstat"
+                [placeholder]="powerstat | titlecase"
+                [formControlName]="powerstat"
+              />
+            </div>
             <div
               class="error"
               *ngIf="
-                (heroForm.get('combat')?.dirty || message) &&
-                heroForm.get('combat')?.invalid
+                heroForm.get('powerstats')?.get(powerstat)?.dirty &&
+                heroForm.get('powerstats')?.get(powerstat)?.invalid
               "
             >
-              <div *ngIf="heroForm.get('combat')?.getError('required')">
-                * Hero name is required
+              <div
+                *ngIf="
+                  heroForm
+                    .get('powerstats')
+                    ?.get(powerstat)
+                    ?.getError('required')
+                "
+              >
+                * {{ powerstat | titlecase }} is required
+              </div>
+
+              <div
+                *ngIf="
+                  heroForm.get('powerstats')?.get(powerstat)?.getError('min') ||
+                  heroForm.get('powerstats')?.get(powerstat)?.getError('max')
+                "
+              >
+                * {{ powerstat | titlecase }} must be a value between 0 and 100
               </div>
             </div>
           </div>
-          <div
-            class="error"
-            *ngIf="
-              heroForm.get('powerstats')?.get('combat')?.dirty &&
-              heroForm.get('powerstats')?.get('combat')?.invalid
-            "
-          >
-            <div
-              *ngIf="
-                heroForm.get('powerstats')?.get('combat')?.getError('required')
-              "
-            >
-              * Combat is required
-            </div>
-            <div
-              *ngIf="
-                heroForm.get('powerstats')?.get('combat')?.getError('min') ||
-                heroForm.get('powerstats')?.get('combat')?.getError('max')
-              "
-            >
-              * Combat must be a value between 0 and 100
-            </div>
-          </div>
-          <div class="input-group">
+          <!--           <div class="input-group">
             <label for="durability">Durability </label>
             <input
               type="number"
@@ -118,7 +112,7 @@
               placeholder="Strength"
               formControlName="strength"
             />
-          </div>
+          </div> -->
         </div>
         <div class="input-group">
           <label for="image">Image: </label>
