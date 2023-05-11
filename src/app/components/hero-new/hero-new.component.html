@@ -14,6 +14,15 @@
             formControlName="name"
             required
           />
+          <div class="error" *ngIf="(heroForm.get('name')?.dirty || message) &&
+            heroForm.get('name')?.invalid
+          "
+        >
+            <div *ngIf="heroForm.get('name')?.getError('required')">
+              * Hero name is required
+            </div>
+
+        </div>
         </div>
         <div formGroupName="powerstats">
           <div class="input-group">
@@ -91,7 +100,7 @@
       </div>
     </div>
     <div class="row">
-      <button >Create</button>
+      <button [disabled]="heroForm.invalid">Create</button>
     </div>
   </form>
 </div>
