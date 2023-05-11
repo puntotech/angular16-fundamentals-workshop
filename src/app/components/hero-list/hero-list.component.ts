@@ -1,9 +1,10 @@
-import { Component, Input } from '@angular/core';
+import { Component, inject, Input } from '@angular/core';
 
 import { CommonModule } from '@angular/common';
 import { Hero } from 'src/app/shared/interfaces/hero.interface';
 import { HeroItemComponent } from '../hero-item/hero-item.component';
 import { HeroPowerstatsChange } from 'src/app/shared/interfaces/hero-powerstats-change.interface';
+import { HeroService } from 'src/app/shared/services/hero.service';
 
 @Component({
   selector: 'app-hero-list',
@@ -14,8 +15,10 @@ import { HeroPowerstatsChange } from 'src/app/shared/interfaces/hero-powerstats-
 })
 export class HeroListComponent {
   @Input() heroes!: Hero[];
+  private readonly heroService = inject(HeroService);
 
   onPowerstatsChange({ hero, powerstat, value}: HeroPowerstatsChange) {
-    hero.powerstats[powerstat] += value;
+    this.heroService.update(hero, powerstat, value);
+
   }
 }
