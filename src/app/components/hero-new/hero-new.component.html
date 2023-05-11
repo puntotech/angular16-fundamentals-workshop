@@ -14,16 +14,19 @@
             formControlName="name"
             required
           />
-          <div
-            class="error"
-            *ngIf="
-              (heroForm.get('name')?.dirty || message) &&
-              heroForm.get('name')?.invalid
-            "
-          >
-            <div *ngIf="heroForm.get('name')?.getError('required')">
-              * Hero name is required
-            </div>
+        </div>
+        <div
+          class="error"
+          *ngIf="
+            (heroForm.get('name')?.dirty || message) &&
+            heroForm.get('name')?.invalid
+          "
+        >
+          <div *ngIf="heroForm.get('name')?.getError('required')">
+            * Hero name is required
+          </div>
+          <div *ngIf="heroForm.get('name')?.getError('heroNameValid')">
+            * Hero name must be a valid name
           </div>
         </div>
         <div formGroupName="powerstats">
@@ -47,31 +50,28 @@
                 * Hero name is required
               </div>
             </div>
+          </div>
+          <div
+            class="error"
+            *ngIf="
+              heroForm.get('powerstats')?.get('combat')?.dirty &&
+              heroForm.get('powerstats')?.get('combat')?.invalid
+            "
+          >
             <div
-              class="error"
               *ngIf="
-                heroForm.get('powerstats')?.get('combat')?.dirty &&
-                heroForm.get('powerstats')?.get('combat')?.invalid
+                heroForm.get('powerstats')?.get('combat')?.getError('required')
               "
             >
-              <div
-                *ngIf="
-                  heroForm
-                    .get('powerstats')
-                    ?.get('combat')
-                    ?.getError('required')
-                "
-              >
-                * Combat is required
-              </div>
-              <div
-                *ngIf="
-                  heroForm.get('powerstats')?.get('combat')?.getError('min') ||
-                  heroForm.get('powerstats')?.get('combat')?.getError('max')
-                "
-              >
-                * Combat must be a value between 0 and 100
-              </div>
+              * Combat is required
+            </div>
+            <div
+              *ngIf="
+                heroForm.get('powerstats')?.get('combat')?.getError('min') ||
+                heroForm.get('powerstats')?.get('combat')?.getError('max')
+              "
+            >
+              * Combat must be a value between 0 and 100
             </div>
           </div>
           <div class="input-group">
