@@ -1,5 +1,6 @@
 import { NextFunction, Request, Response, Router } from 'express';
 
+import { HeroDTO } from '../interfaces/hero.dto';
 import { HeroService } from '../services/hero.service';
 
 export class HeroController {
@@ -18,10 +19,12 @@ export class HeroController {
 
   private findAll = (_: Request, res: Response, next: NextFunction) => {
     const heroes = this.heroService.findAll();
-    res.send(heroes);
+    const heroesDTO = heroes.map(heroe => new HeroDTO(heroe).toJson());
+    res.send(heroesDTO);
   };
 
   private add = (req: Request, res: Response, next: NextFunction) => {
+   // const hero = new Hero(req.body);
     const addHeroResult = this.heroService.add(req.body);
     res.send(addHeroResult);
   };
