@@ -1,5 +1,5 @@
-<div class="hero-update-page">
-  <h3>Update an Hero!</h3>
+<div class="hero-update-page" *ngIf="hero$ | async as hero">
+  <h1 class="text-3xl font-bold">Update an Hero!</h1>
 
-  <app-hero-form (sendHero)="updateHero($event)"></app-hero-form>
+  <app-hero-form [hero]="hero" (sendHero)="updateHero($event)" />
 </div>

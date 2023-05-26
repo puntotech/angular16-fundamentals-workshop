@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { heroResolver } from './shared/guards/hero.resolver';
 
 export const routes: Routes = [
   // Use dynamic imports to load modules lazily
@@ -17,10 +18,12 @@ export const routes: Routes = [
       {
         path: 'update/:id',
         loadComponent: () => import('./pages/hero/hero-update/hero-update.component').then(c => c.HeroUpdateComponent),
+        resolve: { hero: heroResolver },
       },
       {
         path: ':id',
         loadComponent: () => import('./pages/hero/hero-detail/hero-detail.component').then(c => c.HeroDetailComponent),
+        resolve: { hero: heroResolver },
       }
     ],
   },

@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
 
 import { CommonModule } from '@angular/common';
 import { Hero } from 'src/app/shared/interfaces/hero.interface';
@@ -16,6 +16,7 @@ import { Router } from '@angular/router';
 export class HeroNewComponent {
   private readonly heroService = inject(HeroService);
   private readonly router = inject(Router);
+
 
   addHero(_hero: Hero){
     const hero: Hero = {

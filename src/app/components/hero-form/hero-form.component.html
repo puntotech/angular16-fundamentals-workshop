@@ -1,114 +1,141 @@
 <div>
   <h4 class="error">{{ message }}</h4>
-  <form (ngSubmit)="saveHero()" [formGroup]="heroForm">
-    <div class="row">
-      <div class="column">
-        <div class="input-group">
-          <label for="name">Nombre: </label>
-          <input
-            type="text"
-            name="name"
-            placeholder="Name"
-            formControlName="name"
-            required
-          />
-        </div>
-        <div
-          class="error"
-          *ngIf="
-            (heroForm.get('name')?.dirty || message) &&
-            heroForm.get('name')?.invalid
-          "
-        >
-          <div *ngIf="heroForm.get('name')?.getError('required')">
-            * Hero name is required
+  <div class="flex flex-wrap items-center justify-between mx-auto p-4">
+    <form (ngSubmit)="saveHero()" [formGroup]="heroForm">
+      <div class="row">
+        <div class="column">
+          <div class="input-group">
+            <label for="name">Nombre: </label>
+            <input
+              type="text"
+              name="name"
+              placeholder="Name"
+              formControlName="name"
+              required
+            />
           </div>
-          <div *ngIf="heroForm.get('name')?.getError('heroNameValid')">
-            * Hero name must be a valid name
-          </div>
-        </div>
-        <div formGroupName="powerstats">
-          <div *ngFor="let powerstat of this.powerstats">
-            <div class="input-group">
-              <label [for]="powerstat"> {{ powerstat | titlecase }}: </label>
-              <input
-                type="number"
-                [name]="powerstat"
-                [placeholder]="powerstat | titlecase"
-                [formControlName]="powerstat"
-              />
+          <div
+            class="error"
+            *ngIf="
+              (heroForm.get('name')?.dirty || message) &&
+              heroForm.get('name')?.invalid
+            "
+          >
+            <div *ngIf="heroForm.get('name')?.getError('required')">
+              * Hero name is required
             </div>
-            <div
-              class="error"
-              *ngIf="
-                heroForm.get('powerstats')?.get(powerstat)?.dirty &&
-                heroForm.get('powerstats')?.get(powerstat)?.invalid
-              "
-            >
+            <div *ngIf="heroForm.get('name')?.getError('heroNameValid')">
+              * Hero name must be a valid name
+            </div>
+          </div>
+          <div formGroupName="powerstats">
+            <div *ngFor="let powerstat of this.powerstats">
+              <div class="input-group">
+                <label [for]="powerstat"> {{ powerstat | titlecase }}: </label>
+                <input
+                  type="number"
+                  [name]="powerstat"
+                  [placeholder]="powerstat | titlecase"
+                  [formControlName]="powerstat"
+                />
+              </div>
               <div
+                class="error"
                 *ngIf="
-                  heroForm
-                    .get('powerstats')
-                    ?.get(powerstat)
-                    ?.getError('required')
+                  heroForm.get('powerstats')?.get(powerstat)?.dirty &&
+                  heroForm.get('powerstats')?.get(powerstat)?.invalid
                 "
               >
-                * {{ powerstat | titlecase }} is required
-              </div>
+                <div
+                  *ngIf="
+                    heroForm
+                      .get('powerstats')
+                      ?.get(powerstat)
+                      ?.getError('required')
+                  "
+                >
+                  * {{ powerstat | titlecase }} is required
+                </div>
 
-              <div
-                *ngIf="
-                  heroForm.get('powerstats')?.get(powerstat)?.getError('min') ||
-                  heroForm.get('powerstats')?.get(powerstat)?.getError('max')
-                "
-              >
-                * {{ powerstat | titlecase }} must be a value between 0 and 100
+                <div
+                  *ngIf="
+                    heroForm
+                      .get('powerstats')
+                      ?.get(powerstat)
+                      ?.getError('min') ||
+                    heroForm.get('powerstats')?.get(powerstat)?.getError('max')
+                  "
+                >
+                  * {{ powerstat | titlecase }} must be a value between 0 and
+                  100
+                </div>
               </div>
             </div>
           </div>
-        </div>
-        <div class="input-group">
-          <label for="image">Image: </label>
-          <select formControlName="image">
-            <option
-              value="https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/md/370-joker.jpg"
-              selected
-            >
-              Joker
-            </option>
-            <option
-              value="https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/md/87-bionic-woman.jpg"
-            >
-              Bionic Woman
-            </option>
-            <option
-              value="https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/md/165-catwoman.jpg"
-            >
-              Cat Woman
-            </option>
-            <option
-              value="https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/md/332-hulk.jpg"
-            >
-              Hulk
-            </option>
-            <option
-              value="https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/md/644-superman.jpg"
-            >
-              Superman
-            </option>
-          </select>
-        </div>
-        <div class="input-group">
-          <label for="alignment">Alignment: </label>
-          <select formControlName="alignment">
-            <option value="good" selected>Good</option>
-            <option value="bad">Bad</option>
-          </select>
+          <div class="input-group">
+            <label for="image">Image: </label>
+            <select formControlName="image">
+              <option
+                value="https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/md/620-spider-man.jpg"
+              >
+                Spider-Man
+              </option>
+              <option
+                value="https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/md/225-doctor-octopus.jpg"
+              >
+                Doctor Octopus
+              </option>
+              <option
+                value="https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/md/70-batman.jpg"
+              >
+                Batman
+              </option>
+              <option
+                value="https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/md/370-joker.jpg"
+                selected
+              >
+                Joker
+              </option>
+              <option
+                value="https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/md/87-bionic-woman.jpg"
+              >
+                Bionic Woman
+              </option>
+              <option
+                value="https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/md/165-catwoman.jpg"
+              >
+                Cat Woman
+              </option>
+              <option
+                value="https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/md/332-hulk.jpg"
+              >
+                Hulk
+              </option>
+              <option
+                value="https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/md/644-superman.jpg"
+              >
+                Superman
+              </option>
+            </select>
+          </div>
+          <div class="input-group">
+            <label for="alignment">Alignment: </label>
+            <select formControlName="alignment">
+              <option value="good" selected>Good</option>
+              <option value="bad">Bad</option>
+            </select>
+          </div>
         </div>
       </div>
+      <div class="row">
+        <button [disabled]="heroForm.invalid">{{ textButton }}</button>
+      </div>
+    </form>
+    <div class="m-4">
+      <img [src]="heroForm.value.image" />
+      <div class="text-center text-3xl font-bold">
+        {{ heroForm.value.name }}
+      </div>
     </div>
-    <div class="row">
-      <button [disabled]="heroForm.invalid">Create</button>
-    </div>
-  </form>
+  </div>
 </div>

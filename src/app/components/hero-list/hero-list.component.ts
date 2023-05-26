@@ -1,4 +1,4 @@
-import { Component, inject, Input } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
 
 import { CommonModule } from '@angular/common';
 import { Hero } from 'src/app/shared/interfaces/hero.interface';
@@ -18,7 +18,7 @@ export class HeroListComponent {
   private readonly heroService = inject(HeroService);
 
   onPowerstatsChange({ hero, powerstat, value}: HeroPowerstatsChange) {
-    this.heroService.update(hero, powerstat, value);
+    this.heroService.updatePowerstat(hero, powerstat, value);
 
   }
 }

@@ -57,10 +57,16 @@ export class HeroService {
   add(hero: Hero){
     this.heroes.push(hero);
   }
-  update(hero: Hero, powerstat: PowerStat, value: number){
+  updatePowerstat(hero: Hero, powerstat: PowerStat, value: number){
     hero.powerstats[powerstat] += value;
+  }
+  update(heroToUpdate: Hero) {
+    this.heroes = this.heroes.map(hero => hero.id === heroToUpdate.id ? heroToUpdate: hero);
   }
   findAll(): Hero[] {
     return this.heroes;
+  }
+  findOne(id: number): Hero{
+    return this.heroes.find(hero => hero.id === id) || {} as Hero;
   }
 }

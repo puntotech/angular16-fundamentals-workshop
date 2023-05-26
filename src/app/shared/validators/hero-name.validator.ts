@@ -1,6 +1,6 @@
 import { AbstractControl, ValidationErrors, ValidatorFn } from "@angular/forms";
 
-const VALID_NAME = ["hulk", "joker", "superman", "bionic woman", "cat woman"];
+const VALID_NAME =  ["spider-man", "doctor octopus", "batman", "hulk", "joker", "superman", "bionic woman", "cat woman"];
 
 export function heroNameValidator(): ValidatorFn {
   return (control: AbstractControl): ValidationErrors | null => {
