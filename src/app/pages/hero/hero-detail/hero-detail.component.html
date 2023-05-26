@@ -1,1 +1,3 @@
-<p>hero-detail works!</p>
+<div *ngIf="hero$ | async as hero">
+  <app-hero-item [hero]="hero" />
+</div>
