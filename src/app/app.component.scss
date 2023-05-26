@@ -1,15 +1,5 @@
-.hero-page {
-  display: flex;
-  gap: 2rem;
-
-  app-hero-list {
-    width: 70%;
-  }
-  app-hero-new {
-    display: flex;
-    flex-direction: column;
-    border: 1px solid black;
-    border-radius: 5px;
-    width: 25%;
-  }
+.layout {
+  display: grid;
+  min-height: 100vh;
+  grid-template-rows: auto 1fr auto;
 }

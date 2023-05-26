@@ -1,15 +1,39 @@
-<div [class]="hero.alignment === 'bad' ? 'hero-item hero-villain' : 'hero-item '">
+<div
+  [class]="hero.alignment === 'bad' ? 'hero-item hero-villain' : 'hero-item '"
+>
   <div class="image"><img [src]="hero.image" /></div>
   <div class="details">
     <div class="hero-name">{{ hero.name }}</div>
-    <div class="hero-powerstats"
-         *ngFor="let powerstat of hero.powerstats | keyvalue">
+    <div
+      class="hero-powerstats"
+      *ngFor="let powerstat of hero.powerstats | keyvalue"
+    >
       <span>{{ powerstat.key | titlecase }}: {{ powerstat.value }} </span>
       <div class="hero-powerstats-buttons">
-        <button [disabled]="powerstat.value === 0" (click)="decrementPowerStats(powerstat.key)">-</button>
-        <button [disabled]="powerstat.value === 100" (click)="incrementPowerStats(powerstat.key)">+</button>
+        <button
+          class="btn btn-gray"
+          [disabled]="powerstat.value === 0"
+          (click)="decrementPowerStats(powerstat.key)"
+        >
+          -
+        </button>
+        <button
+          class="btn btn-gray"
+          [disabled]="powerstat.value === 100"
+          (click)="incrementPowerStats(powerstat.key)"
+        >
+          +
+        </button>
       </div>
     </div>
+    <hr class="m-4 border-amber-600" />
+    <span
+      class="btn btn-gray mr-2 text-xl"
+      [routerLink]="['/hero', 'update', hero.id]"
+      >Update</span
+    >
+    <span class="btn btn-blue text-xl" [routerLink]="['/hero', hero.id]"
+      >View</span
+    >
   </div>
 </div>
-

@@ -6,20 +6,20 @@ import { Hero } from 'src/app/shared/interfaces/hero.interface';
 import { heroNameValidator } from 'src/app/shared/validators/hero-name.validator';
 
 @Component({
-  selector: 'app-hero-new',
+  selector: 'app-hero-form',
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule],
-  templateUrl: './hero-new.component.html',
-  styleUrls: ['./hero-new.component.scss']
+  templateUrl: './hero-form.component.html',
+  styleUrls: ['./hero-form.component.scss']
 })
-export class HeroNewComponent {
-  @Output() add: EventEmitter<Hero> = new EventEmitter();
+export class HeroFormComponent {
+  @Output() sendHero: EventEmitter<Hero> = new EventEmitter();
 
   private readonly formBuilder = inject(FormBuilder);
   public message = "";
   public heroForm: FormGroup = this.formBuilder.group({
     name: ['Joker', [Validators.required, heroNameValidator()]],
-    image: ["https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/sm/370-joker.jpg"],
+    image: ["https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/md/370-joker.jpg"],
     alignment: ["bad"],
     powerstats: this.formBuilder.group({
       intelligence: [100, [Validators.required, Validators.max(100), Validators.min(0)]],
@@ -32,9 +32,7 @@ export class HeroNewComponent {
   });
   public powerstats = ['intelligence', 'strength', 'speed', 'durability', 'power', 'combat'];
 
-  addHero(){
-
-
+  saveHero(){
     if (this.heroForm.invalid) {
       this.message = "Please correct all errors and resubmit the form";
     } else {
@@ -43,8 +41,8 @@ export class HeroNewComponent {
         ...this.heroForm.value,
         powerstats: {...this.heroForm.value.powerstats },
       };
-      console.log("Creating Hero", hero);
-      this.add.emit(hero);
+      console.log("Saving Hero", hero);
+      this.sendHero.emit(hero);
     }
   }
 

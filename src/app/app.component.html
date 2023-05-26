@@ -1,4 +1,9 @@
-<div class="hero-page">
-  <app-hero-list [heroes]="heroes"></app-hero-list>
-  <app-hero-new (add)="addHero($event)"></app-hero-new>
+<div class="layout">
+  <app-header></app-header>
+  <main
+    class="max-w-screen-2xl flex flex-wrap items-center justify-between mx-auto p-4"
+  >
+    <router-outlet></router-outlet>
+  </main>
+  <app-footer></app-footer>
 </div>

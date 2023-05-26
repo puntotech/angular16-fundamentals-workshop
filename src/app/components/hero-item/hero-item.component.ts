@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Hero, PowerStat } from 'src/app/shared/interfaces/hero.interface';
+import { RouterLink, RouterModule } from '@angular/router';
 
 import { CommonModule } from '@angular/common';
 import { HeroPowerstatsChange } from 'src/app/shared/interfaces/hero-powerstats-change.interface';
@@ -7,7 +8,7 @@ import { HeroPowerstatsChange } from 'src/app/shared/interfaces/hero-powerstats-
 @Component({
   selector: 'app-hero-item',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './hero-item.component.html',
   styleUrls: ['./hero-item.component.scss']
 })

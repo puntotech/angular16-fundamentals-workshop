@@ -11,7 +11,7 @@ export class HeroDTO {
   constructor(hero: Hero){
     this.#id = hero.id;
     this.#alignment = hero.biography.alignment;
-    this.#image = hero.images.sm;
+    this.#image = hero.images.md;
     this.#powerstats = hero.powerstats;
   }
 
