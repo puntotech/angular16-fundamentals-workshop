@@ -1,54 +1,6 @@
 h3 {
   text-align: center;
 }
-form {
-  display: flex;
-  flex-direction: column;
-  background-color: beige;
-  border-radius: 3px;
-  padding: 1em;
-
-  .input-group {
-    display: flex;
-  }
-  .input-group > label {
-    margin-right: 1em;
-    padding: .5em 0;
-  }
-
-  label {
-    width: 35%;
-    font-weight: bolder;
-    font-size: 1.25rem;
-  }
-  .error {
-    width:100%;
-  }
-  input,
-  select {
-    flex: 6;
-    width: 35%;
-    padding: .5em;
-    margin-bottom: 1em;
-  }
-  button {
-    padding: 1em;
-    background: gray;
-    color: white;
-    border: 0;
-    cursor: pointer;
-  }
-  button:disabled,
-  button[disabled]{
-    border: 1px solid #999999;
-    background-color: hsl(0, 0%, 80%);
-    color: #666666;
-    cursor:auto;
-  }
-  fieldset {
-    border: 0;
-  }
-}
 
 .row {
   display: flex;

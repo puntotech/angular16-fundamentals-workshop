@@ -1,5 +1,7 @@
 import { HeroController } from './controllers/hero.controller';
 import { HeroService } from './services/hero.service';
+import { UserController } from './controllers/user.controller';
+import { UserService } from './services/user.service';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 import express from 'express';
@@ -23,7 +25,9 @@ class App {
 
   private setControllers() {
     const heroController = new HeroController(new HeroService());
+    const userController = new UserController(new UserService());
     this.app.use('/heroes', heroController.router);
+    this.app.use('/user', userController.router);
   }
 
   private setErrorHandlingMiddleware() {
