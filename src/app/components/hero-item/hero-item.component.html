@@ -1,7 +1,7 @@
 <div
   [class]="hero.alignment === 'bad' ? 'hero-item hero-villain' : 'hero-item '"
 >
-  <div class="image"><img [src]="hero.image" /></div>
+  <div class="image skeleton"><img [src]="hero.image" loading="lazy" /></div>
   <div class="details">
     <div class="hero-name">{{ hero.name }}</div>
     <div
@@ -30,10 +30,13 @@
     <span
       class="btn btn-gray mr-2 text-xl"
       [routerLink]="['/hero', 'update', hero.id]"
-      >Update</span
-    >
-    <span class="btn btn-blue text-xl" [routerLink]="['/hero', hero.id]"
-      >View</span
-    >
+      >Update
+    </span>
+    <span class="btn btn-blue mr-2 text-xl" [routerLink]="['/hero', hero.id]"
+      >View
+    </span>
+    <span class="btn btn-red mr-2 text-xl" (click)="deleteHero(hero)"
+      >Delete
+    </span>
   </div>
 </div>

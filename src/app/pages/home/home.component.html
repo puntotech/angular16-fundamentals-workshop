@@ -1,3 +1,3 @@
-<div class="hero-page">
+<div class="hero-page" *ngIf="heroes$ | async as heroes">
   <app-hero-list [heroes]="heroes" />
 </div>

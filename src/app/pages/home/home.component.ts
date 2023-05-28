@@ -15,13 +15,9 @@ import { HeroService } from 'src/app/shared/services/hero.service';
 })
 export class HomeComponent {
   private readonly heroService = inject(HeroService);
-  public heroes = this.heroService.findAll();
+  public heroes$ = this.heroService.findAll();
   /*
    constructor(private readonly heroService: HeroService){}
  */
-
-  addHero(hero: Hero){
-    this.heroService.add(hero);
-  }
 
 }

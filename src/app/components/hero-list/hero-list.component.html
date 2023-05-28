@@ -2,5 +2,7 @@
   <app-hero-item
     *ngFor="let hero of heroes"
     [hero]="hero"
-    (powerstatsChange)="onPowerstatsChange($event)"/>
+    (powerstatsChange)="onPowerstatsChange($event)"
+    (delete)="onDelete($event)"
+  />
 </div>

@@ -6,6 +6,7 @@ html {
   box-sizing: inherit;
 }
 
+
 .btn {
   font: bold 11px Arial;
   text-decoration: none;
@@ -40,3 +41,16 @@ html {
 
 .mr-2 { margin-right: 0.5rem; }
 
+
+.skeleton {
+  animation: skeleton-loading 1s linear infinite alternate;
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-color: hsl(200, 20%, 80%);
+  }
+  100% {
+    background-color: hsl(200, 20%, 95%);
+  }
+}

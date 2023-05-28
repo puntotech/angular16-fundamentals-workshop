@@ -1,72 +1,33 @@
 import { Hero, PowerStat } from '../interfaces/hero.interface';
+import { Injectable, inject } from '@angular/core';
 
-import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class HeroService {
-
-  public heroes: Hero[] = [
-    {
-      id: 620,
-      name: "Spider-Man",
-      powerstats: {
-        intelligence: 90,
-        strength: 55,
-        speed: 67,
-        durability: 75,
-        power: 74,
-        combat: 85
-      },
-      image: 'https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/md/620-spider-man.jpg',
-      alignment: "good",
-    },
-    {
-      id: 225,
-      name: "Doctor Octopus",
-      powerstats: {
-        intelligence: 94,
-        strength: 48,
-        speed: 33,
-        durability: 40,
-        power: 53,
-        combat: 65
-      },
-      image: "https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/md/225-doctor-octopus.jpg",
-      alignment: "bad",
-    },
-    {
-      id: 70,
-      name: "Batman",
-      powerstats: {
-        intelligence: 100,
-        strength: 26,
-        speed: 27,
-        durability: 50,
-        power: 47,
-        combat: 100
-      },
-      image: "https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/md/70-batman.jpg",
-      alignment: "good",
-    },
-
-    ];
-  constructor() { }
+  private readonly httpClient = inject(HttpClient);
+  private readonly ENDPOINT = 'http://localhost:9001/heroes/';
 
   add(hero: Hero){
-    this.heroes.push(hero);
+    return this.httpClient.post(this.ENDPOINT, hero);
   }
   updatePowerstat(hero: Hero, powerstat: PowerStat, value: number){
     hero.powerstats[powerstat] += value;
+    return this.httpClient.patch(`${this.ENDPOINT}${hero.id}`, hero);
   }
-  update(heroToUpdate: Hero) {
-    this.heroes = this.heroes.map(hero => hero.id === heroToUpdate.id ? heroToUpdate: hero);
+  update(hero: Hero) {
+    return this.httpClient.put(`${this.ENDPOINT}${hero.id}`, hero);
   }
-  findAll(): Hero[] {
-    return this.heroes;
+  findAll(): Observable<Hero[]> {
+    return this.httpClient.get<Hero[]>(this.ENDPOINT);
   }
-  findOne(id: number): Hero{
-    return this.heroes.find(hero => hero.id === id) || {} as Hero;
+  findOne(id: number): Observable<Hero>{
+    return this.httpClient.get<Hero>(`${this.ENDPOINT}${id}`);
+  }
+  delete(hero: Hero): Observable<void>{
+    return this.httpClient.delete<void>(`${this.ENDPOINT}${hero.id}`);
   }
 }

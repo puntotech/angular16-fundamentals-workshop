@@ -21,7 +21,6 @@ export interface Hero {
     md: string,
     lg: string,
   }
-
 }
 
 export interface PowerStats {

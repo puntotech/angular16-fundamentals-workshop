@@ -24,8 +24,10 @@ export class HeroNewComponent {
       id: Math.floor(Math.random() * 1000) + 1,
     };
     console.log("Creating Hero", hero);
-    this.heroService.add(hero);
-    this.router.navigate(['/home']);
+    this.heroService.add(hero).subscribe({
+        next: () => this.router.navigate(['/home']),
+        error: (error) => console.log(error),
+      })
   }
 
 }

@@ -1,5 +1,5 @@
 import { Hero } from '../interfaces/hero.interface';
-import { heroes } from '../../heroes-db';
+import { heroes } from '../heroes-db-lite';
 
 export class HeroService {
   private heroes: Hero[] = heroes;
@@ -14,14 +14,13 @@ export class HeroService {
   }
 
   public add(hero: Hero) {
-    this.heroes = [...this.heroes, hero];
-    return this.heroes;
+    this.heroes = [hero, ...this.heroes];
+    return hero;
   }
 
-  public delete(id: string | number) {
+  public delete(id: string | number): void {
     id = this.convertID(id);
-    this.heroes = this.heroes.filter((hero) => hero.id === id);
-    return this.heroes;
+    this.heroes = this.heroes.filter((hero) => hero.id !== id);
   }
 
   public update(id: string | number, updatedHero: Hero | Partial<Hero>) {

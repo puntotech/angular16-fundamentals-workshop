@@ -132,7 +132,7 @@
       </div>
     </form>
     <div class="m-4">
-      <img [src]="heroForm.value.image" />
+      <img [src]="heroForm.value.image" loading="lazy" class="skeleton" />
       <div class="text-center text-3xl font-bold">
         {{ heroForm.value.name }}
       </div>

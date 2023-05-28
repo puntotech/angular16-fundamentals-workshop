@@ -18,7 +18,19 @@ export class HeroListComponent {
   private readonly heroService = inject(HeroService);
 
   onPowerstatsChange({ hero, powerstat, value}: HeroPowerstatsChange) {
-    this.heroService.updatePowerstat(hero, powerstat, value);
-
+    this.heroService.updatePowerstat(hero, powerstat, value).subscribe(
+      {
+        next: () => {},
+        error: console.log,
+      }
+    );
+  }
+  onDelete(hero: Hero){
+    this.heroService.delete(hero).subscribe(
+      {
+        next: () => this.heroes = this.heroes.filter(_hero => _hero.id !== hero.id),
+        error: console.log,
+      }
+    )
   }
 }

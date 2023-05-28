@@ -23,7 +23,7 @@ export class HeroFormComponent implements OnInit{
   public textButton = "";
 
   private defaultHero =   {
-    id:  Math.floor(Math.random() * 1000) + 1,
+    id:  Math.floor(Math.random() * 10000) + 1000,
     name: 'Joker',
     image: "https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/md/370-joker.jpg",
     alignment: 'bad',
@@ -42,7 +42,7 @@ export class HeroFormComponent implements OnInit{
     this.textButton = this.hero ? 'Update': 'Create';
 
     this.heroForm = this.formBuilder.group({
-      name: [heroSelected.name, [Validators.required, heroNameValidator()]],
+      name: [heroSelected.name, [Validators.required, /* heroNameValidator() */]],
       image: [heroSelected.image],
       alignment: [heroSelected.alignment],
       powerstats: this.formBuilder.group({

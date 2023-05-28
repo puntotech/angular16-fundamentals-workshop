@@ -33,8 +33,9 @@ export class HeroUpdateComponent {
 
   updateHero(hero: Hero){
     console.log("Updating Hero", hero);
-    this.heroService.update(hero);
-    this.router.navigate(['/home']);
-
+    this.heroService.update(hero).subscribe({
+      next: () =>  this.router.navigate(['/home']),
+      error:  (error) => alert(error),
+    })
   }
 }
