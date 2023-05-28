@@ -1,10 +1,10 @@
 import { Component, Input, inject } from '@angular/core';
 
 import { CommonModule } from '@angular/common';
-import { Hero } from 'src/app/shared/interfaces/hero.interface';
+import { Hero } from 'src/app/features/heroes/interfaces/hero.interface';
 import { HeroItemComponent } from '../hero-item/hero-item.component';
-import { HeroPowerstatsChange } from 'src/app/shared/interfaces/hero-powerstats-change.interface';
-import { HeroService } from 'src/app/shared/services/hero.service';
+import { HeroPowerstatsChange } from 'src/app/features/heroes/interfaces/hero-powerstats-change.interface';
+import { HeroService } from 'src/app/features/heroes/services/hero.service';
 
 @Component({
   selector: 'app-hero-list',

@@ -1,0 +1,40 @@
+<h3>{{ message }}</h3>
+<div class="form-group">
+  <form (ngSubmit)="login()" [formGroup]="loginForm">
+    <div class="user-name">
+      <input
+        type="text"
+        placeholder="Username"
+        required
+        name="username"
+        formControlName="username"
+      />
+      <div
+        *ngIf="
+          (loginForm.get('username').dirty || message) &&
+          loginForm.get('username').invalid
+        "
+      >
+        Username is Mandatory
+      </div>
+    </div>
+    <div class="password">
+      <input
+        type="password"
+        placeholder="Password"
+        required
+        name="password"
+        formControlName="password"
+      />
+      <div
+        *ngIf="
+          (loginForm.get('password').dirty || message) &&
+          loginForm.get('password').invalid
+        "
+      >
+        Password is Mandatory
+      </div>
+    </div>
+    <button type="submit">Login</button>
+  </form>
+</div>

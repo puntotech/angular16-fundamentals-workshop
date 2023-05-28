@@ -2,8 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output, inject } from '@angular
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 import { CommonModule } from '@angular/common';
-import { Hero } from 'src/app/shared/interfaces/hero.interface';
-import { heroNameValidator } from 'src/app/shared/validators/hero-name.validator';
+import { Hero } from 'src/app/features/heroes/interfaces/hero.interface';
 
 @Component({
   selector: 'app-hero-form',

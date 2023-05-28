@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 
 import { ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { HeroItemComponent } from 'src/app/components/hero-item/hero-item.component';
+import { HeroItemComponent } from 'src/app/features/heroes/components/hero-item/hero-item.component';
 import { map } from 'rxjs';
 
 @Component({

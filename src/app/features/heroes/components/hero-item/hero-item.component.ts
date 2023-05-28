@@ -1,8 +1,8 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Hero, PowerStat } from 'src/app/shared/interfaces/hero.interface';
+import { Hero, PowerStat } from 'src/app/features/heroes/interfaces/hero.interface';
 
 import { CommonModule } from '@angular/common';
-import { HeroPowerstatsChange } from 'src/app/shared/interfaces/hero-powerstats-change.interface';
+import { HeroPowerstatsChange } from 'src/app/features/heroes/interfaces/hero-powerstats-change.interface';
 import { RouterModule } from '@angular/router';
 
 @Component({

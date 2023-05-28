@@ -1,4 +1,4 @@
-import { ActivatedRouteSnapshot, ResolveFn, RouterStateSnapshot } from "@angular/router";
+import { ActivatedRouteSnapshot, ResolveFn } from "@angular/router";
 
 import { Hero } from '../interfaces/hero.interface';
 import { HeroService } from '../services/hero.service';

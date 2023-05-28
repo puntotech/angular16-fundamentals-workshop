@@ -2,9 +2,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Component, inject } from '@angular/core';
 
 import { CommonModule } from '@angular/common';
-import { Hero } from 'src/app/shared/interfaces/hero.interface';
-import { HeroFormComponent } from 'src/app/components/hero-form/hero-form.component';
-import { HeroService } from 'src/app/shared/services/hero.service';
+import { Hero } from 'src/app/features/heroes/interfaces/hero.interface';
+import { HeroFormComponent } from '../../components/hero-form/hero-form.component';
+import { HeroService } from 'src/app/features/heroes/services/hero.service';
 import { map } from 'rxjs';
 
 @Component({
@@ -34,7 +34,7 @@ export class HeroUpdateComponent {
   updateHero(hero: Hero){
     console.log("Updating Hero", hero);
     this.heroService.update(hero).subscribe({
-      next: () =>  this.router.navigate(['/home']),
+      next: () =>  this.router.navigate(['/hero']),
       error:  (error) => alert(error),
     })
   }

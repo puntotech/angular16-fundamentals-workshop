@@ -1,10 +1,9 @@
 import { Component, inject } from '@angular/core';
 
 import { CommonModule } from '@angular/common';
-import { Hero } from 'src/app/shared/interfaces/hero.interface';
-import { HeroListComponent } from 'src/app/components/hero-list/hero-list.component';
-import { HeroNewComponent } from 'src/app/pages/hero/hero-new/hero-new.component';
-import { HeroService } from 'src/app/shared/services/hero.service';
+import { HeroListComponent } from 'src/app/features/heroes/components/hero-list/hero-list.component';
+import { HeroNewComponent } from '../hero-new/hero-new.component';
+import { HeroService } from 'src/app/features/heroes/services/hero.service';
 
 @Component({
   selector: 'app-home',

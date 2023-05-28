@@ -1,9 +1,9 @@
 import { Component, Input, inject } from '@angular/core';
 
 import { CommonModule } from '@angular/common';
-import { Hero } from 'src/app/shared/interfaces/hero.interface';
-import { HeroFormComponent } from 'src/app/components/hero-form/hero-form.component';
-import { HeroService } from 'src/app/shared/services/hero.service';
+import { Hero } from 'src/app/features/heroes/interfaces/hero.interface';
+import { HeroFormComponent } from '../../components/hero-form/hero-form.component';
+import { HeroService } from 'src/app/features/heroes/services/hero.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -25,7 +25,7 @@ export class HeroNewComponent {
     };
     console.log("Creating Hero", hero);
     this.heroService.add(hero).subscribe({
-        next: () => this.router.navigate(['/home']),
+        next: () => this.router.navigate(['/hero']),
         error: (error) => console.log(error),
       })
   }
