@@ -20,6 +20,7 @@ export class HeroFormComponent implements OnInit{
   public heroForm!: FormGroup;
   public powerstats = ['intelligence', 'strength', 'speed', 'durability', 'power', 'combat'];
   public textButton = "";
+  public isSubmitted = false;
 
   private defaultHero =   {
     id:  Math.floor(Math.random() * 10000) + 1000,
@@ -65,6 +66,7 @@ export class HeroFormComponent implements OnInit{
         powerstats: {...this.heroForm.value.powerstats },
       };
       console.log("Saving Hero", hero);
+      this.isSubmitted = true;
       this.sendHero.emit(hero);
     }
   }

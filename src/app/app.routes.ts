@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { authGuard } from './shared/guards/auth-guard.';
 
 export const routes: Routes = [
   // Use dynamic imports to load modules lazily
@@ -13,6 +14,7 @@ export const routes: Routes = [
       {
         path: 'hero',
         loadChildren: () => import('./features/heroes/heroes.routes').then(r => r.HEROES_ROUTES),
+        canActivate: [authGuard],
       },
       {
         path: 'auth',

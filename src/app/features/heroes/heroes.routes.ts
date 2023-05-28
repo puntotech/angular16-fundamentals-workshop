@@ -1,3 +1,4 @@
+import { HeroUpdateComponent } from './pages/hero-update/hero-update.component';
 import { Routes } from '@angular/router';
 import { heroResolver } from './guards/hero.resolver';
 
@@ -18,6 +19,7 @@ export const HEROES_ROUTES: Routes = [
           path: 'update/:id',
           loadComponent: () => import('./pages/hero-update/hero-update.component').then(c => c.HeroUpdateComponent),
           resolve: { hero: heroResolver },
+          canDeactivate:[(component: HeroUpdateComponent) => component.canDeactivate()]
         },
         {
           path: ':id',

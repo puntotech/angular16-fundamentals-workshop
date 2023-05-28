@@ -9,7 +9,7 @@
   </a>
 
   <ul class="font-medium flex flex-row space-x-8">
-    <li>
+    <li *ngIf="isLogin$ | async">
       <a
         class="text-gray-900"
         aria-current="page"
@@ -19,7 +19,7 @@
         >Home
       </a>
     </li>
-    <li>
+    <li *ngIf="isLogin$ | async">
       <a
         class="text-gray-900"
         [routerLink]="['hero', 'new']"
@@ -27,7 +27,7 @@
         >New Hero
       </a>
     </li>
-    <li>
+    <li *ngIf="!(isLogin$ | async)">
       <a
         class="text-gray-900"
         [routerLink]="['auth', 'login']"
@@ -35,13 +35,22 @@
         >Login
       </a>
     </li>
-    <li>
+    <li *ngIf="!(isLogin$ | async)">
       <a
         class="text-gray-900"
         routerLink="/auth/register"
         routerLinkActive="text-blue-700"
       >
         Register
+      </a>
+    </li>
+    <li *ngIf="isLogin$ | async">
+      <a
+        routerLink="/auth/login"
+        class="text-gray-900 cursor-pointer"
+        (click)="logout()"
+      >
+        Logout
       </a>
     </li>
   </ul>

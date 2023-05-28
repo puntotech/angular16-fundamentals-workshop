@@ -1,5 +1,5 @@
 import { ActivatedRoute, Router } from '@angular/router';
-import { Component, inject } from '@angular/core';
+import { Component, ViewChild, inject } from '@angular/core';
 
 import { CommonModule } from '@angular/common';
 import { Hero } from 'src/app/features/heroes/interfaces/hero.interface';
@@ -19,10 +19,9 @@ export class HeroUpdateComponent {
   private readonly activatedRoute = inject(ActivatedRoute);
   private readonly router = inject(Router);
 
-  /* @Input() private readonly id!: string; // Input from param */
-   //@Input() public readonly hero: Hero; // Input from Resolver
-
   public hero$ = this.activatedRoute.data.pipe(map(({ hero }) => hero));
+
+  @ViewChild(HeroFormComponent) HeroFormComponent!: HeroFormComponent;
 
   constructor() {
 /*     console.log('id', this.id);
@@ -30,12 +29,19 @@ export class HeroUpdateComponent {
     console.log('hero', this.hero); */
   }
 
-
   updateHero(hero: Hero){
     console.log("Updating Hero", hero);
     this.heroService.update(hero).subscribe({
       next: () =>  this.router.navigate(['/hero']),
       error:  (error) => alert(error),
     })
+  }
+
+  canDeactivate(){
+    if(!this.HeroFormComponent.isSubmitted && this.HeroFormComponent.heroForm.dirty){
+      const value = confirm('Are you sure to leave this page? You have unsaved changes.');
+      return value;
+    }
+    return true;
   }
 }
