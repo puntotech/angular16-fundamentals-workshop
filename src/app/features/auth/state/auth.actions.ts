@@ -18,4 +18,19 @@ export const loginFailure = createAction(
   props<{ payload: HttpErrorResponse }>()
 );
 
+export const register = createAction(
+  '[Register Page] Register',
+  props<{ credentials: AuthLogin }>()
+);
+
+export const registerSuccess = createAction(
+  '[Register Page] Register Success',
+  props<{ credentials: AuthLogin }>()
+);
+
+export const registerFailure = createAction(
+  '[Register Page] Register Failure',
+  props<{ payload: HttpErrorResponse }>()
+);
+
 export const logout = createAction('[Login Page] Logout');

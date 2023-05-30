@@ -4,7 +4,9 @@ import { provideRouter, withComponentInputBinding } from '@angular/router';
 import { provideRouterStore, routerReducer } from '@ngrx/router-store';
 
 import { AuthEffects } from './features/auth/state/auth.effects';
+import { authReducer } from './features/auth/state/auth.state';
 import { loaderInterceptor } from './shared//interceptors/loader.interceptor';
+import { provideEffects } from '@ngrx/effects';
 import { provideStore } from '@ngrx/store';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
 import { routes } from './app.routes';
@@ -12,6 +14,7 @@ import { tokenInterceptor } from './shared/interceptors/token.interceptor';
 
 const store = {
   router: routerReducer,
+  auth: authReducer,
 };
 const effects: any[] = [AuthEffects];
 
@@ -25,5 +28,6 @@ export const appConfig: ApplicationConfig = {
         maxAge: 25,
         logOnly: isDevMode(),
     }),
-  ]
+    provideEffects(effects)
+]
 };

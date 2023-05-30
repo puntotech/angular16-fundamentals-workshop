@@ -1,10 +1,12 @@
+import  * as AuthAction  from '../../state/auth.actions';
+import * as AuthSelector from  '../../state/auth.selectors';
+
 import { Component, inject } from '@angular/core';
 
 import { AuthLogin } from '../../interfaces/auth-login.interface';
-import { AuthService } from '../../services/auth.services';
 import { CommonModule } from '@angular/common';
 import { RegisterFormComponent } from '../../components/register-form/register-form.component';
-import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-register',
@@ -14,15 +16,16 @@ import { Router } from '@angular/router';
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent {
-  private readonly authService = inject(AuthService);
-  private readonly  router = inject(Router);
-  public errorMessage = "";
+  private readonly store = inject(Store);
 
-  register(login: AuthLogin){
+  public errorMessage$ = this.store.select(AuthSelector.selectError);
 
-    this.authService.register(login).subscribe({
+  register(credentials: AuthLogin){
+    this.store.dispatch(AuthAction.register({ credentials }));
+
+/*     this.authService.register(login).subscribe({
       next: () => this.router.navigate(['/auth/login']),
       error: ({ error }) => this.errorMessage = error.msg,
-    });
+    }); */
   }
 }

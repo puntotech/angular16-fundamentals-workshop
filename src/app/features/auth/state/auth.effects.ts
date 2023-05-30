@@ -13,7 +13,6 @@ export class AuthEffects {
   private readonly authService = inject(AuthService);
   private readonly router = inject(Router);
 
-
   login$ = createEffect(() =>
     this.actions$.pipe(
       ofType(AuthActions.login),
@@ -38,6 +37,35 @@ export class AuthEffects {
     () =>
       this.actions$.pipe(
         ofType(AuthActions.loginFailure),
+        map(( { payload }) => alert(payload.error.msg))
+      ),
+    { dispatch: false }
+  );
+
+  register$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(AuthActions.register),
+      exhaustMap(({ credentials }) =>
+        this.authService.register(credentials).pipe(
+          map(() => AuthActions.registerSuccess({ credentials })),
+          catchError(error => of(AuthActions.registerFailure({ payload: error }))),
+        )
+      )
+    )
+  );
+
+  registerSuccess$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(AuthActions.registerSuccess),
+        map(() => this.router.navigateByUrl('/auth/login'))),
+    { dispatch: false }
+  );
+
+  registerFailure$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(AuthActions.registerFailure),
         map(( { payload }) => alert(payload.error.msg))
       ),
     { dispatch: false }
