@@ -1,24 +1,26 @@
+import * as AuthAction from '../../features/auth/state/auth.actions';
+
+import { Injectable, inject } from "@angular/core";
+
 import { BehaviorSubject } from "rxjs";
-import { Injectable } from "@angular/core";
+import { Store } from "@ngrx/store";
+import { selectToken } from "src/app/features/auth/state/auth.selectors";
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserStorageService {
   isLogin$ = new BehaviorSubject(false);
-  #token = localStorage.getItem("user-token") || "";
+  private readonly store = inject(Store);
+  #token = "";
 
 
   constructor(){
-    if(this.token){
-      this.isLogin$.next(true);
-    }
-  }
-
-  set token(token: string) {
-    this.#token = token;
-    localStorage.setItem("user-token", token);
-    this.isLogin$.next(true);
+    this.store.select(selectToken).subscribe((token: string) => {
+      this.#token = token;
+      const value = !!token;
+      this.isLogin$.next(value);
+    });
   }
 
   get token(): string {
@@ -29,7 +31,6 @@ export class UserStorageService {
     return this.isLogin$;
   }
   logout(){
-    this.token = "";
-    this.isLogin$.next(false);
+    this.store.dispatch(AuthAction.logout());
   }
 }

@@ -5,6 +5,7 @@ import { AuthLogin } from '../interfaces/auth-login.interface';
 
 export interface AuthState {
   credentials: AuthLogin;
+  token: string,
   loading: boolean;
   loaded: boolean;
   error: any;
@@ -12,6 +13,7 @@ export interface AuthState {
 
 export const initialState: AuthState = {
   credentials: { username: '', password: ''},
+  token: localStorage.getItem("user-token") || "",
   loading: false,
   loaded: false,
   error: null,
@@ -33,6 +35,7 @@ export function authReducer(
     on(loginSuccess, (state, action) => ({
       ...state,
       credentials: action.credentials,
+      token: action.token,
       loading: false,
       loaded: true,
       error: null,
@@ -49,7 +52,7 @@ export function authReducer(
       loaded: false,
       error: null,
     })),
-    on(registerSuccess, (state, action) => ({
+    on(registerSuccess, (state) => ({
       ...state,
       loading: false,
       loaded: true,
@@ -61,7 +64,10 @@ export function authReducer(
       loaded: false,
       error: { payload },
     })),
-    on(logout, () => initialState)
+    on(logout, () => ({
+      ...initialState,
+      token: '',
+    }))
   );
   return reducer(state, action);
 }

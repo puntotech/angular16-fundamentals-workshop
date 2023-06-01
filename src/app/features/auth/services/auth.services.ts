@@ -11,15 +11,9 @@ import { UserStorageService } from "src/app/shared/services/user-storage.service
 export class AuthService {
   private API_ENDPOINT = "http://localhost:9001/user";
   private readonly httpClient = inject(HttpClient);
-  private readonly userStorageService = inject(UserStorageService);
 
   login(user: AuthLogin): Observable<any> {
-    return this.httpClient.post(`${this.API_ENDPOINT}/login`, user).pipe(
-      map((resp: any) => {
-        this.userStorageService.token = resp.token;
-        return resp;
-      })
-    );
+    return this.httpClient.post(`${this.API_ENDPOINT}/login`, user);
   }
 
   register(user: AuthLogin): Observable<any> {

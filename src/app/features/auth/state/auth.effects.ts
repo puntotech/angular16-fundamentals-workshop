@@ -2,7 +2,7 @@ import * as AuthActions from './auth.actions';
 
 import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { Injectable, inject } from "@angular/core";
-import { catchError, exhaustMap, map, of } from "rxjs";
+import { catchError, exhaustMap, map, of, tap } from "rxjs";
 
 import { AuthService } from "../services/auth.services";
 import { Router } from "@angular/router";
@@ -18,7 +18,7 @@ export class AuthEffects {
       ofType(AuthActions.login),
       exhaustMap(({ credentials }) =>
         this.authService.login(credentials).pipe(
-          map(() => AuthActions.loginSuccess({ credentials })),
+          map(({token}) => AuthActions.loginSuccess({ token, credentials })),
           catchError(error => of(AuthActions.loginFailure({ payload: error }))),
         )
       )
@@ -29,7 +29,8 @@ export class AuthEffects {
     () =>
       this.actions$.pipe(
         ofType(AuthActions.loginSuccess),
-        map(() => this.router.navigateByUrl('/hero'))),
+        map(({ token }) => localStorage.setItem('user-token', token)),
+        tap(() =>  this.router.navigateByUrl('/hero'))),
     { dispatch: false }
   );
 
@@ -70,4 +71,14 @@ export class AuthEffects {
       ),
     { dispatch: false }
   );
+
+  logout$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(AuthActions.logout),
+        map( () => localStorage.clear())
+      ),
+    { dispatch: false }
+  );
+
 }
