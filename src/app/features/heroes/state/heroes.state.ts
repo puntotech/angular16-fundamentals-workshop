@@ -1,5 +1,5 @@
 import { Action, createReducer, on } from '@ngrx/store';
-import { createHero, createHeroFailure, createHeroSuccess, deleteHero, deleteHeroFailure, deleteHeroSuccess, loadHeroes, loadHeroesFailure, loadHeroesSuccess } from './heroes.actions';
+import { createHero, createHeroFailure, createHeroSuccess, deleteHero, deleteHeroFailure, deleteHeroSuccess, loadHeroes, loadHeroesFailure, loadHeroesSuccess, updateHero, updateHeroFailure, updateHeroPowerstat, updateHeroPowerstatSuccess, updateHeroSuccess } from './heroes.actions';
 
 import { Hero } from '../interfaces/hero.interface';
 
@@ -93,6 +93,51 @@ export function heroesReducer(
     ...state,
     loading: false,
     loaded: false,
+    error: { payload },
+  })),
+  on(updateHero, (state) => ({
+    ...state,
+    loading: true,
+    loaded: false,
+    error: null,
+  })),
+  on(updateHeroSuccess, (state, action) => ({
+    ...state,
+    entities: {
+      ...state.entities,
+      [action.hero.id]: action.hero
+    },
+    loading: false,
+    loaded: true,
+    error: null,
+  })),
+  on(updateHeroFailure, (state, { payload }) => ({
+    ...state,
+    loading: false,
+    loaded: false,
+    error: { payload },
+  })),
+  on(updateHeroPowerstat, (state) => ({
+    ...state,
+
+  })),
+  on(updateHeroPowerstatSuccess, (state, action) => ({
+    ...state,
+    entities: {
+      ...state.entities,
+      [action.hero.id]: {
+        ...action.hero,
+        powerstats: {
+          ...action.hero.powerstats,
+          [action.powerstat]: action.hero.powerstats[action.powerstat] + action.value,
+        }
+      }
+    },
+
+  })),
+  on(updateHeroFailure, (state, { payload }) => ({
+    ...state,
+
     error: { payload },
   })),
 );

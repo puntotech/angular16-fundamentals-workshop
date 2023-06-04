@@ -27,9 +27,6 @@ export class HeroesEffects {
     )
   );
 
-
-
-
   loadHeroesFailure$ = createEffect(
     () =>
       this.actions$.pipe(
@@ -52,39 +49,90 @@ export class HeroesEffects {
 );
 
 
-createHeroSuccess$ = createEffect(() =>
-    this.actions$.pipe(
-      ofType(HeroesActions.createHeroSuccess),
-      map(() => this.router.navigate(['/hero']))
-    ),
-  { dispatch: false }
-);
-
-createHeroFailure$ = createEffect(() =>
+  createHeroSuccess$ = createEffect(() =>
       this.actions$.pipe(
-        ofType(HeroesActions.createHeroFailure),
-        map((error) => alert(error.payload.message))),
-  { dispatch: false });
+        ofType(HeroesActions.createHeroSuccess),
+        map(() => this.router.navigate(['/hero']))
+      ),
+    { dispatch: false }
+  );
 
-  deleteHero$ = createEffect(() =>
-  this.actions$.pipe(
-    ofType(HeroesActions.deleteHero),
-    exhaustMap(({ hero }) =>
-      this.heroService.delete(hero).pipe(
-        map(() => HeroesActions.deleteHeroSuccess({ hero })),
-        catchError((error) => of(HeroesActions.deleteHeroFailure({ payload: error })))
+  createHeroFailure$ = createEffect(() =>
+        this.actions$.pipe(
+          ofType(HeroesActions.createHeroFailure),
+          map((error) => alert(error.payload.message))),
+    { dispatch: false });
+
+    deleteHero$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(HeroesActions.deleteHero),
+      exhaustMap(({ hero }) =>
+        this.heroService.delete(hero).pipe(
+          map(() => HeroesActions.deleteHeroSuccess({ hero })),
+          catchError((error) => of(HeroesActions.deleteHeroFailure({ payload: error })))
+        )
       )
     )
-  )
-);
+  );
 
-deleteHeroFailure$ = createEffect(
-  () =>
+  deleteHeroFailure$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(HeroesActions.deleteHeroFailure),
+        map((error) => alert(error.payload.error))
+      ),
+    { dispatch: false }
+  );
+
+  updateHero$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(HeroesActions.deleteHeroFailure),
-      map((error) => alert(error.payload.error))
-    ),
-  { dispatch: false }
-);
+      ofType(HeroesActions.updateHero),
+      exhaustMap(({ hero }) =>
+        this.heroService.update(hero).pipe(
+          map(() => HeroesActions.updateHeroSuccess({ hero })),
+          catchError((error) => of(HeroesActions.updateHeroFailure({ payload: error }))),
+        )
+      )
+    )
+  );
+
+  updateHeroSuccess$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(HeroesActions.updateHeroSuccess),
+        map(() => this.router.navigate(['/hero']))
+      ),
+    { dispatch: false }
+  );
+
+  updateHeroFailure$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(HeroesActions.updateHeroFailure),
+        map((error) => alert(error.payload.error))
+      ),
+    { dispatch: false }
+  );
+
+  updateHeroPowerstat$ = createEffect(() =>
+  this.actions$.pipe(
+    ofType(HeroesActions.updateHeroPowerstat),
+    exhaustMap(({ hero, powerstat, value }) =>
+      this.heroService.updatePowerstat(hero, powerstat, value).pipe(
+        map(() => HeroesActions.updateHeroPowerstatSuccess({ hero, powerstat, value })),
+        catchError((error) => of(HeroesActions.updateHeroPowerstatFailure({ payload: error }))),
+        )
+      )
+    )
+  );
+
+  updateHeroPowerstatFailure$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(HeroesActions.updateHeroPowerstatFailure),
+        map((error) => alert(error.payload.error))
+      ),
+    { dispatch: false }
+  );
 }
 

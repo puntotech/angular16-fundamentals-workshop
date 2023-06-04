@@ -15,8 +15,14 @@ export class HeroService {
     return this.httpClient.post<Hero>(this.ENDPOINT, hero);
   }
   updatePowerstat(hero: Hero, powerstat: PowerStat, value: number){
-    hero.powerstats[powerstat] += value;
-    return this.httpClient.patch(`${this.ENDPOINT}${hero.id}`, hero);
+    const heroToUpdate = {
+      ...hero,
+      powerstats: {
+        ...hero.powerstats,
+        [powerstat]: hero.powerstats[powerstat] + value,
+      }
+    };
+    return this.httpClient.patch(`${this.ENDPOINT}${hero.id}`, heroToUpdate);
   }
   update(hero: Hero) {
     return this.httpClient.put(`${this.ENDPOINT}${hero.id}`, hero);

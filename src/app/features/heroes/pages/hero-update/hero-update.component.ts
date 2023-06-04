@@ -1,10 +1,12 @@
-import { ActivatedRoute, Router } from '@angular/router';
+import * as HeroActions from 'src/app/features/heroes/state';
+
 import { Component, ViewChild, inject } from '@angular/core';
 
+import { ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { Hero } from 'src/app/features/heroes/interfaces/hero.interface';
 import { HeroFormComponent } from '../../components/hero-form/hero-form.component';
-import { HeroService } from 'src/app/features/heroes/services/hero.service';
+import { Store } from '@ngrx/store';
 import { map } from 'rxjs';
 
 @Component({
@@ -15,26 +17,16 @@ import { map } from 'rxjs';
   styleUrls: ['./hero-update.component.scss']
 })
 export class HeroUpdateComponent {
-  private readonly heroService = inject(HeroService);
+  private readonly store = inject(Store);
   private readonly activatedRoute = inject(ActivatedRoute);
-  private readonly router = inject(Router);
 
   public hero$ = this.activatedRoute.data.pipe(map(({ hero }) => hero));
 
   @ViewChild(HeroFormComponent) HeroFormComponent!: HeroFormComponent;
 
-  constructor() {
-/*     console.log('id', this.id);
-    this.hero = this.heroService.findOne(parseInt(this.id, 10));
-    console.log('hero', this.hero); */
-  }
-
   updateHero(hero: Hero){
     console.log("Updating Hero", hero);
-    this.heroService.update(hero).subscribe({
-      next: () =>  this.router.navigate(['/hero']),
-      error:  (error) => alert(error),
-    })
+    this.store.dispatch(HeroActions.updateHero({ hero }));
   }
 
   canDeactivate(){
