@@ -12,7 +12,7 @@ export class HeroService {
   private readonly ENDPOINT = 'http://localhost:9001/heroes/';
 
   add(hero: Hero){
-    return this.httpClient.post(this.ENDPOINT, hero);
+    return this.httpClient.post<Hero>(this.ENDPOINT, hero);
   }
   updatePowerstat(hero: Hero, powerstat: PowerStat, value: number){
     hero.powerstats[powerstat] += value;

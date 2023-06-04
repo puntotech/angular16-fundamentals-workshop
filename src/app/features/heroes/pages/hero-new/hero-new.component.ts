@@ -1,10 +1,11 @@
-import { Component, Input, inject } from '@angular/core';
+import * as HeroActions from 'src/app/features/heroes/state';
+
+import { Component, inject } from '@angular/core';
 
 import { CommonModule } from '@angular/common';
 import { Hero } from 'src/app/features/heroes/interfaces/hero.interface';
 import { HeroFormComponent } from '../../components/hero-form/hero-form.component';
-import { HeroService } from 'src/app/features/heroes/services/hero.service';
-import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-hero-new',
@@ -14,8 +15,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./hero-new.component.scss']
 })
 export class HeroNewComponent {
-  private readonly heroService = inject(HeroService);
-  private readonly router = inject(Router);
+  private readonly store = inject(Store);
 
 
   addHero(_hero: Hero){
@@ -24,10 +24,6 @@ export class HeroNewComponent {
       id: Math.floor(Math.random() * 1000) + 1,
     };
     console.log("Creating Hero", hero);
-    this.heroService.add(hero).subscribe({
-        next: () => this.router.navigate(['/hero']),
-        error: (error) => console.log(error),
-      })
+    this.store.dispatch(HeroActions.createHero({ hero }));
   }
-
 }
