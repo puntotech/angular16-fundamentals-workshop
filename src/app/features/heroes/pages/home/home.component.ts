@@ -1,9 +1,12 @@
+import * as HeroesActions from 'src/app/features/heroes/state';
+
 import { Component, inject } from '@angular/core';
 
 import { CommonModule } from '@angular/common';
 import { HeroListComponent } from 'src/app/features/heroes/components/hero-list/hero-list.component';
 import { HeroNewComponent } from '../hero-new/hero-new.component';
-import { HeroService } from 'src/app/features/heroes/services/hero.service';
+import { Store } from '@ngrx/store';
+import { selectHeroes } from '../../state';
 
 @Component({
   selector: 'app-home',
@@ -13,10 +16,12 @@ import { HeroService } from 'src/app/features/heroes/services/hero.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent {
-  private readonly heroService = inject(HeroService);
-  public heroes$ = this.heroService.findAll();
-  /*
-   constructor(private readonly heroService: HeroService){}
- */
+  private readonly store = inject(Store);
+  public heroes$ = this.store.select(selectHeroes);
+
+   constructor(){
+    this.store.dispatch(HeroesActions.loadHeroes());
+   }
+
 
 }
