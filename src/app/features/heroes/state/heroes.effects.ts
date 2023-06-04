@@ -65,4 +65,26 @@ createHeroFailure$ = createEffect(() =>
         ofType(HeroesActions.createHeroFailure),
         map((error) => alert(error.payload.message))),
   { dispatch: false });
+
+  deleteHero$ = createEffect(() =>
+  this.actions$.pipe(
+    ofType(HeroesActions.deleteHero),
+    exhaustMap(({ hero }) =>
+      this.heroService.delete(hero).pipe(
+        map(() => HeroesActions.deleteHeroSuccess({ hero })),
+        catchError((error) => of(HeroesActions.deleteHeroFailure({ payload: error })))
+      )
+    )
+  )
+);
+
+deleteHeroFailure$ = createEffect(
+  () =>
+    this.actions$.pipe(
+      ofType(HeroesActions.deleteHeroFailure),
+      map((error) => alert(error.payload.error))
+    ),
+  { dispatch: false }
+);
 }
+

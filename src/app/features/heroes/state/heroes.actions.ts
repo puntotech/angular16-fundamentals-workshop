@@ -27,3 +27,19 @@ export const createHeroFailure = createAction(
   '[Heroes] Create hero Failure',
   props<{ payload: HttpErrorResponse }>()
 );
+
+
+export const deleteHero = createAction(
+  '[Heroe] Delete hero',
+  props<{ hero: Hero }>()
+);
+export const deleteHeroSuccess = createAction(
+  '[Hero] Delete hero Success',
+  props<{ hero: Hero }>()
+);
+
+export const deleteHeroFailure = createAction(
+  '[Hero] Delete hero Failure',
+  props<{ payload: HttpErrorResponse }>()
+);
+

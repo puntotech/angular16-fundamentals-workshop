@@ -1,10 +1,10 @@
 import { Action, createReducer, on } from '@ngrx/store';
-import { createHero, createHeroFailure, createHeroSuccess, loadHeroes, loadHeroesFailure, loadHeroesSuccess } from './heroes.actions';
+import { createHero, createHeroFailure, createHeroSuccess, deleteHero, deleteHeroFailure, deleteHeroSuccess, loadHeroes, loadHeroesFailure, loadHeroesSuccess } from './heroes.actions';
 
 import { Hero } from '../interfaces/hero.interface';
 
 export interface HeroesState {
-  ids: string[] | number[];
+  ids: number[];
   entities: { [id: number]: Hero };
   loading: boolean;
   loaded: boolean;
@@ -63,6 +63,33 @@ export function heroesReducer(
     error: null,
   })),
   on(createHeroFailure, (state, { payload }) => ({
+    ...state,
+    loading: false,
+    loaded: false,
+    error: { payload },
+  })),
+  on(deleteHero, (state) => ({
+    ...state,
+    loading: true,
+    loaded: false,
+    error: null,
+  })),
+  on(deleteHeroSuccess, (state, { hero }) => {
+    const entities = {...state.entities};
+    delete entities[hero.id];
+    const ids = [...state.ids].filter(id => id !== hero.id);
+
+    return {
+      ...state,
+      entities,
+      ids,
+      loading: false,
+      loaded: true,
+      error: null,
+    }
+  })
+  ,
+  on(deleteHeroFailure, (state, { payload }) => ({
     ...state,
     loading: false,
     loaded: false,
