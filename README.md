@@ -81,8 +81,8 @@ Las ramas disponibles son las siguientes.
 |  08.05-ngrx-heroes-load |   |   |   |   |
 |  08.05-ngrx-heroes-load-solved |   |   |   |   |
 |  08.06-ngrx-heroes-create |   |   |   |   |
-|  08.06-ngrx-hereoes-create-solved |   |   |   |   |
+|  08.06-ngrx-heroes-create-solved |   |   |   |   |
 |  08.07-ngrx-heroes-delete |   |   |   |   |
-|  08.07-ngrx-hereoes-delete-solved |   |   |   |   |
-|  08.08-ngrx-hereoes-update |   |   |   |   |
-|  08.08-ngrx-hereoes-update-solved |   |   |   |   |
+|  08.07-ngrx-heroes-delete-solved |   |   |   |   |
+|  08.08-ngrx-heroes-update |   |   |   |   |
+|  08.08-ngrx-heroes-update-solved |   |   |   |   |
