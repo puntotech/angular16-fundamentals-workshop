@@ -4,7 +4,7 @@ En este taller se desarrolla una aplicación desde cero en el cual se presentan 
 
 ## Instalación
 
-## Instalar Angular
+### Instalar Angular
 
 Revisar la [documentación oficial de instalación de Angular](https://docs.angular.lat/guide/setup-local#instalar-la-cli-de-angular)
 
