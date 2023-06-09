@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "workshop-fundamentals": {
+    "workshop-angular-fundamentals": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -24,7 +24,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/workshop-fundamentals",
+            "outputPath": "dist/workshop-angular-fundamentals",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
@@ -72,10 +72,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "workshop-fundamentals:build:production"
+              "browserTarget": "workshop-angular-fundamentals:build:production"
             },
             "development": {
-              "browserTarget": "workshop-fundamentals:build:development"
+              "browserTarget": "workshop-angular-fundamentals:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -83,7 +83,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "workshop-fundamentals:build"
+            "browserTarget": "workshop-angular-fundamentals:build"
           }
         },
         "test": {

@@ -1,6 +1,6 @@
 {
-  "name": "workshop-fundamentals",
-  "version": "0.0.0",
+  "name": "workshop-angular-fundamentals",
+  "version": "0.0.1",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -22,6 +22,7 @@
     "tslib": "^2.3.0",
     "zone.js": "~0.13.0"
   },
+  "author": "Carlos Caballero González (@Caballerog)",
   "devDependencies": {
     "@angular-devkit/build-angular": "^16.0.0",
     "@angular/cli": "~16.0.0",
