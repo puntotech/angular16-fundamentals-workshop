@@ -16,13 +16,10 @@ import { RouterOutlet } from '@angular/router';
 })
 export class AppComponent {
   title = 'workshop-fundamentals';
-  private readonly heroService = inject(HeroService);
-  public heroes = this.heroService.findAll();
-  /*
-   constructor(private readonly heroService: HeroService){}
- */
+  /* TODO 401: Injecta el servicio HeroService en una variable llamada heroService privada y de solo lectura */
+  /* TODO 402: Almacena en la variable heroes, el resultado de la invocación del método findAll() del servicio HeroService */
 
   addHero(hero: Hero){
-    this.heroService.add(hero);
+    /* TODO 403: Invoca al método add del servicio HeroService */
   }
 }
