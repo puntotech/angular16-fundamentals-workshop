@@ -14,22 +14,22 @@ import { Hero } from 'src/app/shared/interfaces/hero.interface';
 export class HeroNewComponent {
   @Output() add: EventEmitter<Hero> = new EventEmitter();
 
-  private readonly formBuilder = inject(FormBuilder);
+  /* TODO 301: Inyecta el servicio FormBuilder en un atributo llamado "formBuilder" que sea privado y de solo lectura */
   public message = "";
-  public heroForm: FormGroup = this.formBuilder.group({
-    name: ['Joker', Validators.required],
-    image: ["https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/sm/370-joker.jpg"],
-    alignment: ["bad"],
-    powerstats: this.formBuilder.group({
-      intelligence: [100, [Validators.required, Validators.max(100), Validators.min(0)]],
-      strength: [10, [Validators.required, Validators.max(100), Validators.min(0)]],
-      speed: [12, [Validators.required, Validators.max(100), Validators.min(0)]],
-      durability: [60, [Validators.required, Validators.max(100), Validators.min(0)]],
-      power: [43, [Validators.required, Validators.max(100), Validators.min(0)]],
-      combat: [70, [Validators.required, Validators.max(100), Validators.min(0)]],
-    })
-  }
-  );
+
+  /* TODO 302: Crea un atributo denominado heroForm que sea del tipo FormGroup que inicialmente se cree usando "formBuilder", debe disponer de
+  los siguientes controles con los siguientes valores por defecto y validaciones:
+    name: 'Joker', Requerido
+    image: "https://cdn.jsdelivr.net/gh/akabab/superhero-api@0.3.0/api/images/sm/370-joker.jpg"
+    alignment: "bad"
+    powerstats: El cual es un FormGroup a su vez:
+      intelligence: 100, requerido, minimo 0 y máximo 100
+      strength: 10, requerido, mínimo 0 y máximo 100
+      speed: 12, requerido, mínimo 0 y máximo 100
+      durability: 60, requerido, mínimo 0 y máximo 100,
+      power: 43, requerido, mínimo 0 y máximo 100
+      combat: 70, requerido mínimo 0 y máximo 100
+  */
 
 
   addHero(){
