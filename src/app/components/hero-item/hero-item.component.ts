@@ -26,19 +26,17 @@ export class HeroItemComponent {
     alignment: "good",
   };
 
-  public isHeroVillain = this.hero.alignment === "bad";
+  /* TODO 101: Crear isHeroVillain el cual comprueba si el alignment de un heroe es "bad" */
 
   decrementPowerStats(powerstat: PowerStat): void{
-    const value = this.hero.powerstats[powerstat];
-    if(value > 0){
-      this.hero.powerstats[powerstat]--;
-    }
+    /*
+    * TODO 102: Comprueba si la habilidad (powerstat) es mayor que 0 y le resta una unidad.
+    */
   }
 
   incrementPowerStats(powerstat: PowerStat): void{
-    const value = this.hero.powerstats[powerstat];
-    if(value < 100){
-      this.hero.powerstats[powerstat]++;
-    }
+    /*
+    * TODO 102: Comprueba si la habilidad (powerstat) es menor que 100 y le añade una unidad.
+    */
   }
 }
