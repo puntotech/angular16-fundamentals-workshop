@@ -12,14 +12,23 @@ import { HeroPowerstatsChange } from 'src/app/shared/interfaces/hero-powerstats-
   styleUrls: ['./hero-item.component.scss']
 })
 export class HeroItemComponent {
-  @Input( { required: true}) hero! : Hero;
-  @Output() powerstatsChange: EventEmitter<HeroPowerstatsChange> = new EventEmitter();
-
+ /*
+  TODO 202:
+   Crea un atributo hero del tipo Hero, que sea recibido por el componente padre a través del decorador @Input,
+   y que este campo sea requerido.
+  Crea un evento de salida denominado powerstatsChange que emita objetos del tipo HeroPowerstatsChange
+ */
   decrementPowerStats(powerstat: PowerStat): void{
-    this.powerstatsChange.emit({ hero: this.hero, powerstat, value: -1 });
+  /*   TODO 203: Emite un objeto del tipo HeroPowerStatsChange que esté compuesto por los siguientes datos:
+          hero: this.hero,
+          powerstat,
+          value: -1 */
   }
 
   incrementPowerStats(powerstat: PowerStat): void{
-    this.powerstatsChange.emit({ hero: this.hero, powerstat, value: 1 });
+    /*   TODO 204: Emite un objeto del tipo HeroPowerStatsChange que esté compuesto por los siguientes datos:
+          hero: this.hero,
+          powerstat,
+          value: 1 */
   }
 }
