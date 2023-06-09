@@ -3,6 +3,11 @@ import { Routes } from '@angular/router';
 export const routes: Routes = [
   // Use dynamic imports to load modules lazily
 
+  /* TODO 502 - Configura las rutas que carguen las páginas:
+     hero/new --> /pages/hero/hero-new
+     hero/udpate:id --> /pages/hero-update/hero-update
+     hero/:id -> pages/hero/hero-detail/hero-detail.component
+  */
   {
     path: 'home',
     loadComponent: () => import('./pages/home/home.component').then(c => c.HomeComponent)
@@ -10,18 +15,11 @@ export const routes: Routes = [
   {
     path: 'hero',
     children: [
-      {
-        path: 'new',
-        loadComponent: () => import('./pages/hero/hero-new/hero-new.component').then(c => c.HeroNewComponent)
-      },
-      {
-        path: 'update/:id',
-        loadComponent: () => import('./pages/hero/hero-update/hero-update.component').then(c => c.HeroUpdateComponent),
-      },
-      {
-        path: ':id',
-        loadComponent: () => import('./pages/hero/hero-detail/hero-detail.component').then(c => c.HeroDetailComponent),
-      }
+    /* TODO 502 - Configura las rutas que carguen las páginas:
+      hero/new --> /pages/hero/hero-new
+      hero/udpate:id --> /pages/hero-update/hero-update
+      hero/:id -> pages/hero/hero-detail/hero-detail.component
+    */
     ],
   },
   {
