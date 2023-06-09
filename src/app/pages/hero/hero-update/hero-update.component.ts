@@ -19,23 +19,12 @@ export class HeroUpdateComponent {
   private readonly activatedRoute = inject(ActivatedRoute);
   private readonly router = inject(Router);
 
-  /* @Input() private readonly id!: string; // Input from param */
-   //@Input() public readonly hero: Hero; // Input from Resolver
-
   public hero$ = this.activatedRoute.data.pipe(map(({ hero }) => hero));
-
-  constructor() {
-/*     console.log('id', this.id);
-    this.hero = this.heroService.findOne(parseInt(this.id, 10));
-    console.log('hero', this.hero); */
-  }
 
 
   updateHero(hero: Hero){
     console.log("Updating Hero", hero);
-    this.heroService.update(hero).subscribe({
-      next: () =>  this.router.navigate(['/home']),
-      error:  (error) => alert(error),
-    })
+       /* TODO 603: Actualiza un nuevo hero, si todo va correcto navega a la página /home en caso contrario muestra el error */
+
   }
 }
