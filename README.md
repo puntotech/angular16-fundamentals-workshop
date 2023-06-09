@@ -44,6 +44,7 @@ Las ramas disponibles son las siguientes.
 
 | Nombre de rama | Concepto  |  |   |   |
 |---|---|---|---|---|
+|  [main](https://github.com/puntotech/workshop-angular-fundamentals) | Rama inicial | | | | | 
 |  01.01-single-component  |  Creación de un componente  |   |   |   |
 |  01.01-single-component-solved| Solución de Creación de un componente  |   |   |   |
 |  02.01-communication | Comunicación entre componentes (@Input/@Output)  |   |   |   |
