@@ -15,19 +15,15 @@
             required
           />
         </div>
+        <!--  TODO 311: Agrega el div con class error solo si el formControlName name ha sido dirty y esta invalido -->
         <div
           class="error"
-          *ngIf="
-            (heroForm.get('name')?.dirty || message) &&
-            heroForm.get('name')?.invalid
-          "
         >
-          <div *ngIf="heroForm.get('name')?.getError('required')">
-            * Hero name is required
-          </div>
-          <div *ngIf="heroForm.get('name')?.getError('heroNameValid')">
-            * Hero name must be a valid name
-          </div>
+          <!--  TODO 312: Agrega un div si el error del controlador name es requerido -->
+
+          <!--  TODO 313: Agrega un div si el error del controlador name es heroNameValid -->
+
+
         </div>
         <div formGroupName="powerstats">
           <div class="input-group">
@@ -39,41 +35,11 @@
               formControlName="combat"
             />
 
-            <div
-              class="error"
-              *ngIf="
-                (heroForm.get('combat')?.dirty || message) &&
-                heroForm.get('combat')?.invalid
-              "
-            >
-              <div *ngIf="heroForm.get('combat')?.getError('required')">
-                * Hero name is required
-              </div>
-            </div>
-          </div>
-          <div
-            class="error"
-            *ngIf="
-              heroForm.get('powerstats')?.get('combat')?.dirty &&
-              heroForm.get('powerstats')?.get('combat')?.invalid
-            "
-          >
-            <div
-              *ngIf="
-                heroForm.get('powerstats')?.get('combat')?.getError('required')
-              "
-            >
-              * Combat is required
-            </div>
-            <div
-              *ngIf="
-                heroForm.get('powerstats')?.get('combat')?.getError('min') ||
-                heroForm.get('powerstats')?.get('combat')?.getError('max')
-              "
-            >
-              * Combat must be a value between 0 and 100
-            </div>
-          </div>
+          <!--  TODO 314: Agrega el div con class error solo si el formControlName name ha sido dirty y est invalido -->
+          <!--  TODO 315: Agrega un div si el error del controlador name es requerido -->
+
+          <!--  TODO 316: Agrega un div si el error del controlador name es heroNameValid -->
+
           <div class="input-group">
             <label for="durability">Durability </label>
             <input
