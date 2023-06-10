@@ -15,8 +15,9 @@ A modo de resumen para instalar Angular CLI se debe ejecutar el siguiente comand
 ### Instalar el taller de Angular Fundamentals
 
 1. `git clone git@github.com:puntotech/workshop-angular-fundamentals.git`
-2. `npm i` 
-3. `npm serve`
+2. `cd workshop-angular-fundamentals`
+3. `npm i` 
+4. `npm serve`
 
 ## Cómo realizar el taller
 
@@ -42,48 +43,48 @@ Para hacer funcionar la API debe seguir los siguientes pasos:
 
 Las ramas disponibles son las siguientes.
 
-| Nombre de rama | Concepto  |  |   |   |
-|---|---|---|---|---|
-|  [main](https://github.com/puntotech/workshop-angular-fundamentals) | Rama inicial | | | | | 
-|  01.01-single-component  |  Creación de un componente  |   |   |   |
-|  01.01-single-component-solved| Solución de Creación de un componente  |   |   |   |
-|  02.01-communication | Comunicación entre componentes (@Input/@Output)  |   |   |   |
-|  02.01-communication-solved |   |   |   |   |
-|  03.01-form-new | Formularios Reactivos  |   |   |   |
-|  03.01-form-new-solved |   |   |   |   |
-|  03.02-form-new-error | Gestión de errores en Formularios Reactivos  |   |   |   |
-|  03.02-form-new-error-solved |   |   |   |   |
-|  03.03-form-new-ngFor | Optimización de formularios reactivos  |   |   |   |
-|  03.03-form-new-ngFor-solved |   |   |   |   |
-|  04.01-services | Creación de servicios  |   |   |   |
-|  04.01-services-solved |   |   |   |   |
-|  05.01-router | Introducción al Router  |   |   |   |
-|  05.01-router-solved |   |   |   |   |
-|  05.02-router-params | Router: Paso de parámetros  |   |   |   |
-|  05.02-router-params-solved |   |   |   |   |
-|  06.01-http | Comunicación con el backend  |   |   |   |
-|  06.01-http-solved |   |   |   |   |
-|  07.01-features | Arquitectura de la app en features   |   |   |   |
-|  07.01-features-solved |   |   |   |   |
-|  07.02-login-register | Páginas de Login/Register  |   |   |   |
-|  07.02-login-register-solved |   |   |   |   |
-|  07.03-guards | Creación de Guardas  |   |   |   |
-|  07.03-guards-solved |   |   |   |   |
-|  07.04-interceptors | Interceptores (Token y Loader)  |   |   |   |
-|  07.04-interceptors-solved |   |   |   |   |
-|  08.01-ngrx-configuration | NgRX: Configuración  |   |   |   |
-|  08.01-ngrx-configurationn-solved |   |   |   |   |
-|  08.02-ngrx-auth-login | NgRX: Login   |   |   |   |
-|  08.02-ngrx-auth-login-solved |   |   |   |   |
-|  08.03-ngrx-auth-register | NgrX: Register  |   |   |   |
-|  08.03-ngrx-auth-register-solved |   |   |   |   |
-|  08.04-ngrx-auth-logout | NgRX: Logout  |   |   |   |
-|  08.04-ngrx-auth-logout-solved |   |   |   |   |
-|  08.05-ngrx-heroes-load | NgRX: Load Heroes |   |   |   |
-|  08.05-ngrx-heroes-load-solved |   |   |   |   |
-|  08.06-ngrx-heroes-create |NgRX: Create Heroes |   |   |   |
-|  08.06-ngrx-heroes-create-solved |   |   |   |   |
-|  08.07-ngrx-heroes-delete | NgRX: Delete Heroes |   |   |   |
-|  08.07-ngrx-heroes-delete-solved |   |   |   |   |
-|  08.08-ngrx-heroes-update | NgRX: Update Heroes |   |   |   |
-|  08.08-ngrx-heroes-update-solved |   |   |   |   |
+| Nombre de rama | Concepto  |  
+|---|---|
+|  [main](https://github.com/puntotech/workshop-angular-fundamentals) | Rama inicial | | 
+|  [01.01-single-component](https://github.com/puntotech/workshop-angular-fundamentals/tree/01.01-single-component)  |  Creación de un componente  |  
+|  [01.01-single-component-solved](https://github.com/puntotech/workshop-angular-fundamentals/tree/01.01-single-component-solved) | Solución de Creación de un componente  |  
+|  [02.01-communication](https://github.com/puntotech/workshop-angular-fundamentals/tree/02.01-communication)) | Comunicación entre componentes (@Input/@Output)  |  
+|  [02.01-communication-solved](https://github.com/puntotech/workshop-angular-fundamentals/tree/02.01-communication-solved) |   |   
+|  [03.01-form-new](https://github.com/puntotech/workshop-angular-fundamentals/tree/03.01-form-new) | Formularios Reactivos  |  
+|  [03.01-form-new-solved](https://github.com/puntotech/workshop-angular-fundamentals/tree/03.01-form-new-solved) |   |  
+|  [03.02-form-new-error](https://github.com/puntotech/workshop-angular-fundamentals/tree/03.02-form-new-error) | Gestión de errores en Formularios Reactivos  | 
+|  [03.02-form-new-error-solved](https://github.com/puntotech/workshop-angular-fundamentals/tree/03.03-form-new-error-solved) |   |  
+|  [03.03-form-new-ngFor](https://github.com/puntotech/workshop-angular-fundamentals/tree/03.03-form-new-ngFor) | Optimización de formularios reactivos  |  
+|  [03.03-form-new-ngFor-solved](https://github.com/puntotech/workshop-angular-fundamentals/tree/03.03-form-new-ngFor) |   |  
+|  [04.01-services](https://github.com/puntotech/workshop-angular-fundamentals/tree/04.01-services) | Creación de servicios  |  
+|  [04.01-services-solved](https://github.com/puntotech/workshop-angular-fundamentals/tree/04.01-services-solved) |   | 
+|  [05.01-router](https://github.com/puntotech/workshop-angular-fundamentals/tree/05.01-router) | Introducción al Router  |  
+|  [05.01-router-solved](https://github.com/puntotech/workshop-angular-fundamentals/tree/05.01-router-solved) |   |  
+|  [05.02-router-params](https://github.com/puntotech/workshop-angular-fundamentals/tree/05.02-router-params) | Router: Paso de parámetros  |
+|  [05.02-router-params-solved](https://github.com/puntotech/workshop-angular-fundamentals/tree/05.02-router-params-solved) |   |
+|  [06.01-http](https://github.com/puntotech/workshop-angular-fundamentals/tree/61.01-http) | Comunicación con el backend  |
+|  [06.01-http-solved](https://github.com/puntotech/workshop-angular-fundamentals/tree/06.01-http-solved) |   |
+|  07.01-features | Arquitectura de la app en features   |
+|  07.01-features-solved |   | 
+|  07.02-login-register | Páginas de Login/Register  | 
+|  07.02-login-register-solved |   | 
+|  07.03-guards | Creación de Guardas  | 
+|  07.03-guards-solved |   |
+|  07.04-interceptors | Interceptores (Token y Loader)  |
+|  07.04-interceptors-solved |   |
+|  08.01-ngrx-configuration | NgRX: Configuración  | 
+|  08.01-ngrx-configurationn-solved |   | 
+|  08.02-ngrx-auth-login | NgRX: Login   | 
+|  08.02-ngrx-auth-login-solved |   | 
+|  08.03-ngrx-auth-register | NgrX: Register  |  
+|  08.03-ngrx-auth-register-solved |   | 
+|  08.04-ngrx-auth-logout | NgRX: Logout  | 
+|  08.04-ngrx-auth-logout-solved |   | 
+|  08.05-ngrx-heroes-load | NgRX: Load Heroes |  
+|  08.05-ngrx-heroes-load-solved |   | 
+|  08.06-ngrx-heroes-create |NgRX: Create Heroes |  
+|  08.06-ngrx-heroes-create-solved |   |
+|  08.07-ngrx-heroes-delete | NgRX: Delete Heroes |   
+|  08.07-ngrx-heroes-delete-solved |   |  
+|  08.08-ngrx-heroes-update | NgRX: Update Heroes | 
+|  08.08-ngrx-heroes-update-solved |   |  
