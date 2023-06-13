@@ -1,27 +1,28 @@
-# WorkshopFundamentals
+# Taller de fundamentos de Angular 16+
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.0.0.
+En este paso se desarolla el siguiente componente:
 
-## Development server
+![Reactive Form](/docs/03.01-form-new-solved.gif)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Reactive Form
 
-## Code scaffolding
+Angular proporciona dos diferentes aproximaciones para gestionar la entrada de usuarios a través de formularios:
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- Reactivos.
+- Dirigidos por plantilla.
 
-## Build
+Angular provides two different approaches to handling user input through forms: reactive and template-driven.
+Both capture user input events from the view, validate the user input, create a form model and data model to update, and provide a way to track changes.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+[Documentación de Reactive Forms](https://angular.io/guide/reactive-forms)
 
-## Running unit tests
+# Ejercicios
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Busca en el código fuente los siguientes ejercicios a desarrollar, si necesita ver la solución cambie a la rama con el prefijo `-solved`.
 
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+- TODO 301 (`hero.new.component.ts`) Inyecta el servicio `FormBuilder` en un atributo llamado `formBuilder` que sea privado y de solo lectura
+- TODO 302 (`hero.new.component.ts`) Crea un atributo denominado `heroForm` que sea del tipo `FormGroup` que inicialmente se cree usando `formBuilder`, con los controles descritos en el código.
+- TODO 303 (`hero.new.component.html`) Agregar a la etiqueta form, que cuando sea enviado `(ngSubmit)` se invoque el método `addHero`, y que el `formGroup` asociado sea el atributo `heroForm`.
+- TODO 304 (`hero.new.component.html`) Agregar el `formControlName` del input al controlador `name`
+- TODO 305 (`hero.new.component.html`) Agregar el `formGroupName` `powerstats` al elemento DIV y los `formControlName` de las diferentes habilidades a los elementos `input`
+- TODO 306 (`hero.new.component.html`) Agregar el `formControlName` a `image` y `alignment`
