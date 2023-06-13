@@ -1,27 +1,43 @@
-# WorkshopFundamentals
+# Taller de fundamentos de Angular 16+
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.0.0.
+En este paso se desarolla el siguiente componente:
 
-## Development server
+![Single Component](/docs/02.01-communication-solved.gif)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Communication between components
 
-## Code scaffolding
+Un común patrón en Angular es compartir datos entre componentes padres y uno o más componentes hijos.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Este patrón es implementado con los decoradores `@Input()` y `@Output()`.
 
-## Build
+[@Input y @Output Documentación](https://angular.io/guide/inputs-outputs)
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+# Ejercicios
 
-## Running unit tests
+Busca en el código fuente los siguientes ejercicios a desarrollar, si necesita ver la solución cambie a la rama con el prefijo `-solved`.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+- TODO 200 (`app.component.html`) Incluir el elemento `<app-hero-item>`
+- TODO 201 (`hero-list.html`) Genere tantos componentes `app-hero-item` como `"heroes"` hay en el array `"heroes"`, enviar al componente `"app-hero-item"` cada objeto `hero` en
+  el input denominado `"hero"`, además configurar el evento de output denominado `"powerstatsChange"` que invoque al método `onPowerstatsChange` que recibe el héroe emitido por el componente `app-hero-item`
+- TODO 202 (`hero-item.ts`)
+  - Crea un atributo `hero` del tipo `Hero`, que sea recibido por el componente padre a través del decorador `@Input`, y que este campo sea requerido.
+  - Crea un evento de salida denominado `powerstatsChange` que emita objetos del tipo `HeroPowerstatsChange`
+- TODO 203 (`hero-item.ts`) Emite un objeto del tipo `HeroPowerStatsChange` que esté compuesto por los siguientes datos:
 
-## Running end-to-end tests
+```
+{
+    hero: this.hero,
+    powerstat,
+    value: -1,
+}
+```
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+- TODO 204 (`hero-item.ts`) Emite un objeto del tipo `HeroPowerStatsChange` que esté compuesto por los siguientes datos:
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+```
+{
+    hero: this.hero,
+    powerstat,
+    value: 1,
+}
+```
