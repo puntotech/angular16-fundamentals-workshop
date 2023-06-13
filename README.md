@@ -64,7 +64,7 @@ No obstante, si ejecutas el npm script `npm start` la API se levantará concurre
 
 Las ramas disponibles son las siguientes.
 
-| Nombre de rama                                                                                                                 | Concepto                                        |
+| Nombre de rama                                                                                                                 | Concepto                                        |     |
 | ------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------- | --- |
 | [main](https://github.com/puntotech/workshop-angular-fundamentals)                                                             | Rama inicial                                    |     |
 | [01.01-single-component](https://github.com/puntotech/workshop-angular-fundamentals/tree/01.01-single-component)               | Creación de un componente                       |
