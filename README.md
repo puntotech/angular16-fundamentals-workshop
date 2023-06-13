@@ -2,6 +2,8 @@
 
 En este taller se desarrolla una aplicación desde cero de Angular 16+, en el cual se presentan los conceptos fundamentales de desarrollo en Angular 16+ enfocado en desarrolladores que nunca han desarrollado aplicaciones web en Angular previamente.
 
+![Super Heroes Workshop!](/docs/demo.gif)
+
 ## Prerequisitos
 
 - [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
