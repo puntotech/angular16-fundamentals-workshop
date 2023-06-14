@@ -14,7 +14,7 @@ Este patrón es implementado con los decoradores `@Input()` y `@Output()`.
 
 # Ejercicios
 
-Busca en el código fuente los siguientes ejercicios a desarrollar, si necesita ver la solución cambie a la rama con el prefijo `-solved`.
+Busca en el código fuente los siguientes ejercicios a desarrollar, si necesita ver la solución cambie a la rama con el sufijo `-solved`.
 
 - TODO 200 (`app.component.html`) Incluir el elemento `<app-hero-item>`
 - TODO 201 (`hero-list.html`) Genere tantos componentes `app-hero-item` como `"heroes"` hay en el array `"heroes"`, enviar al componente `"app-hero-item"` cada objeto `hero` en
