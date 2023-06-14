@@ -1,27 +1,49 @@
-# WorkshopFundamentals
+# Taller de fundamentos de Angular 16+
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.0.0.
+En este paso se desarolla el siguiente componente:
 
-## Development server
+![Servicios](/docs/05.01-router-solved.gif)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Router en Angular
 
-## Code scaffolding
+En una SPA (_Single Page Application_) se cambia lo que ve el usuario mostrando u ocultando partes de la pantalla que corresponden a componentes particulares, en lugar de ir al servidor para obtener una nueva página.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+A medida que los usuarios realizan tareas de aplicación, necesitan moverse entre las diferentes vistas que se hna definido.
 
-## Build
+El router permite la navegación al interpretar una URL del navegador como una instrucción para cambiar la vista.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+La estructura de componentes y páginas en esta rama es la mostrada en la siguiente imagen. Observe que tenemos los siguientes elementos:
 
-## Running unit tests
+- Páginas: Las páginas serán los componentes que se enruten a través del router.
+  - auth: Las páginas relativas al módulo de Autenticación
+    - Login - Página de autenticación (se desarrolla más adelante).
+    - Register - Página de registro (se desarrolla más adelante).
+  - hero: Las páginas relativas a los héroes
+    - Hero-detail - Página para mostrar la información de un héroe.
+    - Hero-new - Página para crear un nuevo héroe, se hará uso del component hero-form.
+    - Hero-update - Página para actualizar un nuevo héroe, se hará uso del componente hero-form.
+- Componentes: Las piezas por las que se construirán las páginas de la aplicación web.
+  - hero-form - Formulario para crear o actualizar un héroe, el formulario es el mismo. En esta rama aún no se enviará por parámetro el objeto heroe a modificar (se desarrolla más adelante).
+  - hero-list - Componente que muestra una lista de hero-item.
+  - hero-item - Componente que muestra la información de un héroe.
+- Shared: Elementos que son compartidos para toda la aplicación.
+  - Componentes: Componentes utilizados en toda la aplicación.
+    - header - Cabecera donde aparece el menú de navegación.
+    - footer - Pie de página donde aparece el copyright.
+  - Interfaces: Definición de los interfaces compartidos en toda la aplicación
+  - Services: Servicios compartidos en toda la aplicación.
+  - Validators: Validadores para los formularios.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+![Pages-Components](/docs/pages-components.png)
 
-## Running end-to-end tests
+- [Documentación de Router](https://angular.io/guide/router)
+- [Documentación de loadComponents usando Standalone Components](https://angular.io/guide/standalone-components#lazy-loading-a-standalone-component)
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+# Ejercicios
 
-## Further help
+Busca en el código fuente los siguientes ejercicios a desarrollar, si necesita ver la solución cambie a la rama con el sufijo `-solved`.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+- TODO 501 (`app.config.ts`) Configura el router
+- TODO 502 (`app.router.ts`) Configurar rutas de heroes
+- TODO 503 (`hero-new.component.ts`) Navega hasta la página `/home`
+- TODO 504 (`header.component.ts`) Configura la navegación entre páginas y activa el `routerLinkActive` con la clase `text-blue-700`
