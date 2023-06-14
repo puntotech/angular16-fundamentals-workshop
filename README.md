@@ -22,6 +22,7 @@ La estructura de componentes y páginas en esta rama es la mostrada en la siguie
     - Hero-detail - Página para mostrar la información de un héroe.
     - Hero-new - Página para crear un nuevo héroe, se hará uso del component hero-form.
     - Hero-update - Página para actualizar un nuevo héroe, se hará uso del componente hero-form.
+  - home: Es la página principal que se carga al acceder a la aplicación, en esta página se muestra el componente `hero-list`.
 - Componentes: Las piezas por las que se construirán las páginas de la aplicación web.
   - hero-form - Formulario para crear o actualizar un héroe, el formulario es el mismo. En esta rama aún no se enviará por parámetro el objeto heroe a modificar (se desarrolla más adelante).
   - hero-list - Componente que muestra una lista de hero-item.
