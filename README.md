@@ -21,7 +21,7 @@ Los estados de los controles de formularios de Angular describe el estado de un 
 
 # Ejercicios
 
-Busca en el código fuente los siguientes ejercicios a desarrollar, si necesita ver la solución cambie a la rama con el prefijo `-solved`.
+Busca en el código fuente los siguientes ejercicios a desarrollar, si necesita ver la solución cambie a la rama con el sufijo `-solved`.
 
 - TODO 311 (`hero.new.component.html`) Agrega el div con class `error` solo si el `formControlName` `name` ha sido `dirty` y es inválido.
 - TODO 312 (`hero.new.component.html`) Agrega un div si el error del controlador `name` es requerido.
