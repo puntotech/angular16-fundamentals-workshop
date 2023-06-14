@@ -1,27 +1,40 @@
-# WorkshopFundamentals
+# Taller de fundamentos de Angular 16+
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.0.0.
+En este paso se desarolla el siguiente componente:
 
-## Development server
+![Router Params](/docs/05.02-router-params-solved.gif)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Router Params en Angular
 
-## Code scaffolding
+Por el momento, cualquier usuario puede navegar en cualquier parte de la aplicación en cualquier momento, pero a veces necesita controlar el acceso a diferentes partes de su aplicación por varias razones, algunas de las cuales pueden incluir las siguientes:
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- Quizás el usuario no esté autorizado para navegar hasta el componente de destino (se desarrollará más adelante - [07.03-guards](https://github.com/puntotech/angular16-fundamentals-workshop/tree/07.03-guards)).
+- Tal vez el usuario debe iniciar sesión (autenticarse) primero (se desarrollará más adelante - [07.03-guards](https://github.com/puntotech/angular16-fundamentals-workshop/tree/07.03-guards)).
+- **Tal vez debería obtener algunos datos antes de mostrar el componente de destino** (Este punto es el que trabajaremos)
+- Es posible que desee guardar los cambios pendientes antes de abandonar un componente (se desarrollará más adelante - [07.03-guards](https://github.com/puntotech/angular16-fundamentals-workshop/tree/07.03-guards)).
+- Puede preguntarle al usuario si está bien descartar los cambios pendientes en lugar de guardarlos (se desarrollará más adelante - [07.03-guards](https://github.com/puntotech/angular16-fundamentals-workshop/tree/07.03-guards)).
 
-## Build
+Todos los puntos anteriores se desarrollan en Angular haciendo uso de Guardas (y resolver) en cada punto de entrada del router.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Guards en Angular
 
-## Running unit tests
+A continuación detallamos las guardas según la funcionalidad que desarrollan. Las guardas se trabajan en la rama [07.03-guards](https://github.com/puntotech/angular16-fundamentals-workshop/tree/07.03-guards)
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+| GUARD INTERFACES   | DETAILS                                                                                     |
+| ------------------ | ------------------------------------------------------------------------------------------- |
+| `canActivate`      | Navegar hacia una ruta                                                                      |
+| `canActivateChild` | Navegar hacia una ruta hija                                                                 |
+| `canDeactivate`    | Navegar fuera de la actual ruta (cambiar de página)                                         |
+| `resolve`          | Para recuperar datos de la ruta antes de activar la ruta                                    |
+| `canMatch`         | Para controlar si se debe usar una ruta, incluso si la ruta coincide con el segmento de URL |
 
-## Running end-to-end tests
+- [Documentación sobre Guardas](https://angular.io/guide/router-tutorial-toh#milestone-5-route-guards)
+- [Ejemplo de Resolve](https://angular.io/api/router/ResolveFn)
+- [Ejemplo de Resolve en tour de los héroes](https://angular.io/guide/router-tutorial-toh#resolve-pre-fetching-component-data)
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+# Ejercicios
 
-## Further help
+Busca en el código fuente los siguientes ejercicios a desarrollar, si necesita ver la solución cambie a la rama con el sufijo `-solved`.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+- TODO 505 (`app.routes.ts`/`hero.resolver`) Crea y utiliza un `ResolveFn` para las rutas que hacen uso del `:id` del `hero`.
+- TODO 506 (`hero-detail.component.ts`/`hero-update.component.ts`) Crea un observable (`hero$`) que obtenga el héroe del `ActivatedRoute`
