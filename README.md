@@ -1,27 +1,32 @@
-# WorkshopFundamentals
+# Taller de fundamentos de Angular 16+
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.0.0.
+En este paso se desarolla el siguiente componente:
 
-## Development server
+![Reactive Form](/docs/03.02-form-new-error-solved.gif)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Angular Form Control State
 
-## Code scaffolding
+Los estados de los controles de formularios de Angular describe el estado de un control de un formulario en los formularios de Angular. 
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+| STATE | DETAILS | CSS-Class |
+| --- | --- | --- |
+Pristine | El usuario no ha modificado el control | `.ng-pristine` |
+Dirty | El usuario ha modificado el control | `.ng-dirty`|
+Touched | El usuario ha interactuado con el control, e.g., `clicking` o `focusing` | `.ng-touched` |
+Untouched | El usuario no ha interactuado con el control | `.ng-untouched` |
+Valid | El valor del control del formulario encaja en las reglas de validación definidas en la aplicacion | `.ng-valid` |
+Invalid | El valor del control del formulario no encaja en las reglas de validación definidas en la aplicación | `.ng-invalid` |
 
-## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+[Documentación de Reactive Forms](https://angular.io/guide/form-validation#validator-functions)
 
-## Running unit tests
+# Ejercicios
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Busca en el código fuente los siguientes ejercicios a desarrollar, si necesita ver la solución cambie a la rama con el prefijo `-solved`.
 
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+- TODO 311 (`hero.new.component.html`) Agrega el div con class `error` solo si el `formControlName` `name` ha sido `dirty` y es inválido.
+- TODO 312 (`hero.new.component.html`) Agrega un div si el error del controlador `name` es requerido.
+- TODO 313 (`hero.new.component.html`) Agrega un div si el error del controlador `name` es `heroNameValid`
+- TODO 314 (`hero.new.component.html`)  Agrega el div con class error solo si el `formControlName` name ha sido `dirty` y está inválido.
+- TODO 315 (`hero.new.component.html`) Agrega un div si el error del controlador `name` es requerido
+- TODO 316 (`hero.new.component.html`)  Agrega un div si el error del controlador `name` es `heroNameValid`
