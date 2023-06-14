@@ -18,7 +18,7 @@ Both capture user input events from the view, validate the user input, create a 
 
 # Ejercicios
 
-Busca en el código fuente los siguientes ejercicios a desarrollar, si necesita ver la solución cambie a la rama con el prefijo `-solved`.
+Busca en el código fuente los siguientes ejercicios a desarrollar, si necesita ver la solución cambie a la rama con el sufijo `-solved`.
 
 - TODO 301 (`hero.new.component.ts`) Inyecta el servicio `FormBuilder` en un atributo llamado `formBuilder` que sea privado y de solo lectura
 - TODO 302 (`hero.new.component.ts`) Crea un atributo denominado `heroForm` que sea del tipo `FormGroup` que inicialmente se cree usando `formBuilder`, con los controles descritos en el código.
