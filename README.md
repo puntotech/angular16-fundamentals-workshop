@@ -18,7 +18,7 @@ Un componente debe usar servicios para tareas que no involucren la vista o la l�
 
 # Ejercicios
 
-Busca en el código fuente los siguientes ejercicios a desarrollar, si necesita ver la solución cambie a la rama con el prefijo `-solved`.
+Busca en el código fuente los siguientes ejercicios a desarrollar, si necesita ver la solución cambie a la rama con el sufijo `-solved`.
 
 - TODO 401 (`app.component.ts`) Injecta el servicio `HeroService` en una variable llamada `heroService` privada y de solo lectura.
 - TODO 402 (`app.component.ts`) Almacena en la variable `heroes`, el resultado de la invocación del método `findAll()` del servicio `HeroService`
