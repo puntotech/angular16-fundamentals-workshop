@@ -10,11 +10,10 @@ import { map } from 'rxjs';
   standalone: true,
   imports: [CommonModule, HeroItemComponent],
   templateUrl: './hero-detail.component.html',
-  styleUrls: ['./hero-detail.component.scss']
+  styleUrls: ['./hero-detail.component.scss'],
 })
 export class HeroDetailComponent {
   private readonly activatedRoute = inject(ActivatedRoute);
 
-  public hero$ = this.activatedRoute.data.pipe(map(({ hero }) => hero));
-
+  /* TODO 506: Crea un observable llamado hero$ que obtenga el héroe del ActivatedRoute */
 }

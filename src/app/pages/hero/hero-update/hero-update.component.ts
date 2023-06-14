@@ -19,18 +19,8 @@ export class HeroUpdateComponent {
   private readonly activatedRoute = inject(ActivatedRoute);
   private readonly router = inject(Router);
 
-  /* @Input() private readonly id!: string; // Input from param */
-   //@Input() public readonly hero: Hero; // Input from Resolver
-
-  public hero$ = this.activatedRoute.data.pipe(map(({ hero }) => hero));
-
-  constructor() {
-/*     console.log('id', this.id);
-    this.hero = this.heroService.findOne(parseInt(this.id, 10));
-    console.log('hero', this.hero); */
-  }
-
-
+  /* TODO 506: Crea un observable llamado hero$ que obtenga el héroe del ActivatedRoute */
+  
   updateHero(hero: Hero){
     console.log("Updating Hero", hero);
     this.heroService.update(hero);
