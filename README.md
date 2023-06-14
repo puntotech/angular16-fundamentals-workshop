@@ -2,48 +2,39 @@
 
 En este paso se desarolla el siguiente componente:
 
-![Servicios](/docs/05.01-router-solved.gif)
+![Router Params](/docs/05.02-router-params-solved.gif)
 
-## Router en Angular
+## Router Params en Angular
 
-En una SPA (_Single Page Application_) se cambia lo que ve el usuario mostrando u ocultando partes de la pantalla que corresponden a componentes particulares, en lugar de ir al servidor para obtener una nueva página.
+Por el momento, cualquier usuario puede navegar en cualquier parte de la aplicación en cualquier momento, pero a veces necesita controlar el acceso a diferentes partes de su aplicación por varias razones, algunas de las cuales pueden incluir las siguientes:
 
-A medida que los usuarios realizan tareas de aplicación, necesitan moverse entre las diferentes vistas que se hna definido.
+- Quizás el usuario no esté autorizado para navegar hasta el componente de destino (se desarrollará más adelante - [07.03-guards](https://github.com/puntotech/angular16-fundamentals-workshop/tree/07.03-guards)).
+- Tal vez el usuario debe iniciar sesión (autenticarse) primero (se desarrollará más adelante - [07.03-guards](https://github.com/puntotech/angular16-fundamentals-workshop/tree/07.03-guards)).
+- **Tal vez debería obtener algunos datos antes de mostrar el componente de destino** (Este punto es el que trabajaremos)
+- Es posible que desee guardar los cambios pendientes antes de abandonar un componente (se desarrollará más adelante - [07.03-guards](https://github.com/puntotech/angular16-fundamentals-workshop/tree/07.03-guards)).
+- Puede preguntarle al usuario si está bien descartar los cambios pendientes en lugar de guardarlos (se desarrollará más adelante - [07.03-guards](https://github.com/puntotech/angular16-fundamentals-workshop/tree/07.03-guards)).
 
-El router permite la navegación al interpretar una URL del navegador como una instrucción para cambiar la vista.
+Todos los puntos anteriores se desarrollan en Angular haciendo uso de Guardas (y resolver) en cada punto de entrada del router.
 
-La estructura de componentes y páginas en esta rama es la mostrada en la siguiente imagen. Observe que tenemos los siguientes elementos:
+## Guards en Angular
 
-- Páginas: Las páginas serán los componentes que se enruten a través del router.
-  - auth: Las páginas relativas al módulo de Autenticación
-    - Login - Página de autenticación (se desarrolla más adelante).
-    - Register - Página de registro (se desarrolla más adelante).
-  - hero: Las páginas relativas a los héroes
-    - Hero-detail - Página para mostrar la información de un héroe.
-    - Hero-new - Página para crear un nuevo héroe, se hará uso del component hero-form.
-    - Hero-update - Página para actualizar un nuevo héroe, se hará uso del componente hero-form.
-- Componentes: Las piezas por las que se construirán las páginas de la aplicación web.
-  - hero-form - Formulario para crear o actualizar un héroe, el formulario es el mismo. En esta rama aún no se enviará por parámetro el objeto heroe a modificar (se desarrolla más adelante).
-  - hero-list - Componente que muestra una lista de hero-item.
-  - hero-item - Componente que muestra la información de un héroe.
-- Shared: Elementos que son compartidos para toda la aplicación.
-  - Componentes: Componentes utilizados en toda la aplicación.
-    - header - Cabecera donde aparece el menú de navegación.
-    - footer - Pie de página donde aparece el copyright.
-  - Interfaces: Definición de los interfaces compartidos en toda la aplicación
-  - Services: Servicios compartidos en toda la aplicación.
-  - Validators: Validadores para los formularios.
+A continuación detallamos las guardas según la funcionalidad que desarrollan. Las guardas se trabajan en la rama [07.03-guards](https://github.com/puntotech/angular16-fundamentals-workshop/tree/07.03-guards)
 
-![Pages-Components](/docs/pages-components.png)
+| GUARD INTERFACES   | DETAILS                                                                                     |
+| ------------------ | ------------------------------------------------------------------------------------------- |
+| `canActivate`      | Navegar hacia una ruta                                                                      |
+| `canActivateChild` | Navegar hacia una ruta hija                                                                 |
+| `canDeactivate`    | Navegar fuera de la actual ruta (cambiar de página)                                         |
+| `resolve`          | Para recuperar datos de la ruta antes de activar la ruta                                    |
+| `canMatch`         | Para controlar si se debe usar una ruta, incluso si la ruta coincide con el segmento de URL |
 
-- [Documentación de Router](https://angular.io/guide/router)
-- [Documentación de loadComponents usando Standalone Components](https://angular.io/guide/standalone-components#lazy-loading-a-standalone-component)
+- [Documentación sobre Guardas](https://angular.io/guide/router-tutorial-toh#milestone-5-route-guards)
+- [Ejemplo de Resolve](https://angular.io/api/router/ResolveFn)
+- [Ejemplo de Resolve en tour de los héroes](https://angular.io/guide/router-tutorial-toh#resolve-pre-fetching-component-data)
 
 # Ejercicios
 
 Busca en el código fuente los siguientes ejercicios a desarrollar, si necesita ver la solución cambie a la rama con el sufijo `-solved`.
 
-- TODO 501 (`app.config.ts`) Configura el router
-- TODO 502 (`app.router.ts`) Configurar rutas de heroes
-- TODO 503 (`hero-new.component.ts`) Navega hasta la página `/home`
-- TODO 504 (`header.component.ts`) Configura la navegación entre páginas y activa el `routerLinkActive` con la clase `text-blue-700`
+- TODO 505 (`app.routes.ts`/`hero.resolver`) Crea y utiliza un `ResolveFn` para las rutas que hacen uso del `:id` del `hero`.
+- TODO 506 (`hero-detail.component.ts`/`hero-update.component.ts`) Crea un observable (`hero$`) que obtenga el héroe del `ActivatedRoute`
