@@ -33,7 +33,7 @@ export type PowerStat = keyof PowerStats;
 
 # Ejercicios
 
-Busca en el código fuente los siguientes ejercicios a desarrollar, si necesita ver la solución cambie a la rama con el prefijo `-solved`.
+Busca en el código fuente los siguientes ejercicios a desarrollar, si necesita ver la solución cambie a la rama con el sufijo `-solved`.
 
 - TODO 100 (`app.component.html`) Incluir el elemento `<app-hero-item>`.
 - TODO 101 (`hero-item.ts`): Crear `isHeroVillain` el cual comprueba si el `alignment` de un héroe es `"bad"`.
